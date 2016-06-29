@@ -30,4 +30,8 @@ class Controller extends BaseController
             'wait'=>$wait
         ]);
     }
+
+    public function adminGate($permission){
+        return \Auth::guard('admin')->user()->can($permission);
+    }
 }

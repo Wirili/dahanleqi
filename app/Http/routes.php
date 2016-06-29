@@ -70,6 +70,11 @@ Route::get('admin/article_cat/del/{id}', ['uses'=>'Admin\ArticleCatController@de
 Route::get('admin/admin/index', ['uses'=>'Admin\AdminController@index','as'=>'admin.admin.index']);
 Route::post('admin/admin/ajax', ['uses'=>'Admin\AdminController@ajax','as'=>'admin.admin.ajax']);
 
+//权限控制路由
+Route::get('admin/role/index',['uses'=>'Admin\RoleController@index','as'=>'admin.role.index']);
+Route::get('admin/role/create',['uses'=>'Admin\RoleController@create','as'=>'admin.role.create']);
+Route::post('admin/role/ajax', ['uses'=>'Admin\RoleController@ajax','as'=>'admin.role.ajax']);
+
 //获取图片
 Route::get('image/{filename}',['uses'=>'ImageController@getGoodImage', 'as'=>'good.image']);
 

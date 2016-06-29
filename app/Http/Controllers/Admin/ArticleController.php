@@ -40,6 +40,9 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
+        if(!$this->adminGate('article_edit')){
+            return $this->sysMsg('没有权限');
+        }
         $article = Article::find($id);
         $article_cat = ArticleCat::all();
         return view('admin.article.edit', ['article' => $article, 'article_cat' => $article_cat]);
@@ -47,6 +50,9 @@ class ArticleController extends Controller
 
     public function create()
     {
+        if(!$this->adminGate('article_new')){
+            return $this->sysMsg('没有权限');
+        }
         $article = new Article([
             'is_open' => 1
         ]);
@@ -56,6 +62,9 @@ class ArticleController extends Controller
 
     public function del($id)
     {
+        if(!$this->adminGate('article_del')){
+            return $this->sysMsg('没有权限');
+        }
         $article = Article::find($id);
         if($article->count()) {
             $article->delete();
@@ -66,7 +75,9 @@ class ArticleController extends Controller
 
     public function save(Request $request)
     {
-
+        if(!$this->adminGate(['article_edit','article_new'])){
+            return $this->sysMsg('没有权限');
+        }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
             return $this->sysMsg('',null,'error')->withErrors($validator);

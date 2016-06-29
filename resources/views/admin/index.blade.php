@@ -60,6 +60,7 @@
             <a href="javascript:void(0);"><i class="fa fa-users"></i><span>权限管理</span><b class="fa fa-angle-down"></b></a>
             <ul class="sub-menu-list">
                 <li><a href="{{URL::route('admin.admin.index')}}" target="mainframe">管理员列表</a></li>
+                <li><a href="{{URL::route('admin.role.index')}}" target="mainframe">角色管理</a></li>
             </ul>
         </li>
     </ul>
