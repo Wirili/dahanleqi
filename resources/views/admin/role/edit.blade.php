@@ -64,9 +64,8 @@
 <script>
     $('#select_all').on('click',function(){
         if(this.checked==true)
-            $("input[name='data[]']").each(function(){
-                debugger;
-                $(this).attr('checked','true');
+            $("input[name='data[]']").each(function(item){
+                item.checked=true;
             })
         else
             $("input[name='data[]']").each(function(){
