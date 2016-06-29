@@ -37,7 +37,7 @@
                     url: "{{URL::action('Admin\ArticleController@ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
-                    {data: 'article_id'},
+                    {data: 'article_id',className:'text-center'},
                     {data: 'title'},
                     {
                         data: 'article_cat.cat_name',

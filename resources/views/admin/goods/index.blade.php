@@ -41,7 +41,7 @@
                     url: "{{URL::action('Admin\GoodsController@ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
-                    {data: 'goods_id'},
+                    {data: 'goods_id',className:'text-center'},
                     {data: 'goods_name'},
                     {data: 'goods_sn'},
                     {

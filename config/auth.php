@@ -118,4 +118,9 @@ return [
         ],
     ],
 
+    /*
+     * entrust model setting
+     */
+    'model'=>'App\Models\Admin',
+
 ];

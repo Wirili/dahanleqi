@@ -79,6 +79,8 @@ Route::get('admin/role/edit/{id}',['uses'=>'Admin\RoleController@edit','as'=>'ad
 Route::get('admin/role/create',['uses'=>'Admin\RoleController@create','as'=>'admin.role.create']);
 Route::post('admin/role/save',['uses'=>'Admin\RoleController@save','as'=>'admin.role.save']);
 Route::post('admin/role/ajax', ['uses'=>'Admin\RoleController@ajax','as'=>'admin.role.ajax']);
+Route::get('admin/role/del/{id}', ['uses'=>'Admin\RoleController@del','as'=>'admin.role.del']);
+
 
 //获取图片
 Route::get('image/{filename}',['uses'=>'ImageController@getGoodImage', 'as'=>'good.image']);

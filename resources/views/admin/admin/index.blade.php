@@ -35,7 +35,7 @@
                     url: "{{URL::action('Admin\AdminController@ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
-                    {data: 'user_id'},
+                    {data: 'user_id',className:'text-center'},
                     {data: 'name'},
                     {data: 'email'},
                     {

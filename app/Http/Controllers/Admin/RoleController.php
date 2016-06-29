@@ -57,6 +57,23 @@ class RoleController extends Controller
         return view('admin.role.edit', ['role' => $role,'permission'=>$permission,'perms'=>$perms]);
     }
 
+    public function del($id)
+    {
+        if(!$this->adminGate('role_del')){
+            return $this->sysMsg('没有权限');
+        }
+        $role = Role::find($id);
+        if($role->count()) {
+            if(!$role->users->count()){
+                $role->delete();
+                return $this->sysMsg('角色删除成功',\URL::action('Admin\RoleController@index'));
+            }else{
+                return $this->sysMsg('有用户使用当前角色，删除不成功，清移除用户角色后再尝试删除',\URL::action('Admin\RoleController@index'));
+            }
+        }else
+            return $this->sysMsg('角色不存在',\URL::action('Admin\RoleController@index'));
+    }
+
     public function save(Request $request)
     {
         if(!$this->adminGate(['role_edit','role_new'])){

@@ -11,7 +11,7 @@
             <th class="text-center" width="60">@lang('sys.id')</th>
             <th class="text-center">@lang('role.display_name')</th>
             <th class="text-center">@lang('role.name')</th>
-            <th class="text-center" width="60">@lang('role.description')</th>
+            <th class="text-center">@lang('role.description')</th>
             <th class="text-center" width="100">@lang('sys.handle')</th>
         </tr>
         </thead>
@@ -36,7 +36,7 @@
                     url: "{{URL::route('admin.role.ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
-                    {data: 'id'},
+                    {data: 'id',className:'text-center'},
                     {data: 'display_name'},
                     {data: 'name'},
                     {data: 'description'},

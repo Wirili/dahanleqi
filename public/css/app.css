@@ -255,6 +255,7 @@ body {
   margin-right: 10px;
 }
 
+/*table按钮*/
 div.dataTables_wrapper div#btn {
   text-align: right;
 }

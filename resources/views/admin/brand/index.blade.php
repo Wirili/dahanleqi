@@ -36,7 +36,7 @@
                     url: "{{URL::action('Admin\BrandController@ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
-                    {data: 'brand_id'},
+                    {data: 'brand_id',className:'text-center'},
                     {data: 'brand_name'},
                     {
                         data: 'is_show',
