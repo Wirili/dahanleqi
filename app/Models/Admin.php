@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class Admin extends Authenticatable
 {
+    use EntrustUserTrait;
     protected $primaryKey='user_id';
     /**
      * The attributes that are mass assignable.
