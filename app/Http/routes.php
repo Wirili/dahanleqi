@@ -68,6 +68,9 @@ Route::get('admin/article_cat/del/{id}', ['uses'=>'Admin\ArticleCatController@de
 
 //管理员路由
 Route::get('admin/admin/index', ['uses'=>'Admin\AdminController@index','as'=>'admin.admin.index']);
+Route::get('admin/admin/edit/{id}',['uses'=>'Admin\AdminController@edit','as'=>'admin.admin.edit']);
+Route::get('admin/admin/create',['uses'=>'Admin\AdminController@create','as'=>'admin.admin.create']);
+Route::post('admin/admin/save',['uses'=>'Admin\AdminController@save','as'=>'admin.admin.save']);
 Route::post('admin/admin/ajax', ['uses'=>'Admin\AdminController@ajax','as'=>'admin.admin.ajax']);
 
 //权限控制路由

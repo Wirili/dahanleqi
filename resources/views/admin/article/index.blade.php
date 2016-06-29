@@ -23,7 +23,7 @@
                 $('[data-toggle="tooltip"]').tooltip();
             })
             .DataTable({
-                dom:"<'row'<'col-sm-6'l><'#btn.col-sm-6'>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+                dom:"<'row'<'col-sm-6'l><'col-sm-6'<'#btn'>>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
                 pagingType: "full_numbers",
                 pageLength: 10,
                 autoWidth: false,
@@ -69,7 +69,7 @@
                 ],
                 order: [[0, "desc"]]
             });
-            $('#btn').append("<a class='btn btn-primary pull-right' href='{{URL::route('admin.article.create')}}'>@lang('article.add')</a>");
+            $('#btn').append("<a class='btn btn-primary' href='{{URL::route('admin.article.create')}}'>@lang('article.add')</a>");
         });
     </script>
 @endsection

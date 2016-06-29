@@ -11,4 +11,8 @@ return [
     'add' => '添加管理员',
     'name' => '姓名',
     'email' => 'Email',
+    'password' => '密码',
+    'password_confirm' => '密码确认',
+    'roles' => '角色列表',
+    'tab_permission'=>'权限列表',
 ];

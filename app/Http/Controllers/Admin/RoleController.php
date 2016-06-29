@@ -51,10 +51,10 @@ class RoleController extends Controller
         if(!$this->adminGate('role_new')){
             return $this->sysMsg('没有权限');
         }
-        $role = new Role([
-            'is_open' => 1
-        ]);
-        return view('admin.role.edit', ['role' => $role]);
+        $role = new Role();
+        $permission = Permission::where('parent_id',0)->get();
+        $perms=[];
+        return view('admin.role.edit', ['role' => $role,'permission'=>$permission,'perms'=>$perms]);
     }
 
     public function save(Request $request)
@@ -76,13 +76,6 @@ class RoleController extends Controller
         $role->description = $request->description;
         if($role->save()){
             $data=$request->data;
-//            $perms=[];
-//            foreach ($data as $item) {
-//                $perms[]=[
-//                    'permission_id'=>$item,
-//                    'role_id'=>$role->id
-//                ];
-//            }
             $role->savePermissions($data);
         }
         return $this->sysMsg('角色保存成功',\URL::action('Admin\RoleController@index'));

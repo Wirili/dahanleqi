@@ -261,3 +261,11 @@ body{
   margin-left: 0;
   margin-right: 10px;
 }
+div.dataTables_wrapper div#btn{
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  div.dataTables_wrapper div#btn {
+    text-align: center;
+  }
+}

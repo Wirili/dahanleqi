@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
+use App\Models\Role;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,16 +15,15 @@ class AdminController extends Controller
 {
     //
     protected $rules = [
-    'title' => 'required',
-    'cat_id' => 'required|numeric|min:1',
-    'contents' => 'required',
+    'name' => 'required',
+    'email' => 'required',
+    'password' => 'same:password_confirm',
     ];
 
     protected $messages = [
-    'title.required' => '请输入文章标题',
-    'cat_id.required' => '请选择文章类型',
-    'cat_id.min' => '请选择文章类型',
-    'contents.required' => '请输入文章内容',
+    'name.required' => '请输入管理员名称',
+    'email.required' => '请输入电子邮件',
+    'password.same' => '两次密码不相同',
     ];
 
     public function __construct()
@@ -37,18 +38,35 @@ class AdminController extends Controller
 
     public function edit($id)
     {
-        $article = Article::find($id);
-        $article_cat = ArticleCat::all();
-        return view('admin.article.edit', ['article' => $article, 'article_cat' => $article_cat]);
+        $admin = Admin::find($id);
+        $roles = Role::all();
+        $admin_roles=[];
+        foreach ($admin->roles as $role) {
+            $admin_roles[$role->id]=1;
+        }
+
+        $permission = Permission::where('parent_id',0)->get();
+        $perms=[];
+        foreach ($admin->roles as $role) {
+            foreach ($role->perms as $perm) {
+                $perms[$perm->id]=1;
+            }
+        }
+        return view('admin.admin.edit', ['admin' => $admin,'roles'=>$roles,'admin_roles'=>$admin_roles,'permission'=>$permission,'perms'=>$perms]);
     }
 
     public function create()
     {
-        $article = new Article([
-            'is_open' => 1
-        ]);
-        $article_cat = ArticleCat::all();
-        return view('admin.article.edit', ['article' => $article, 'article_cat' => $article_cat]);
+        $admin = new Admin();
+        $roles = Role::all();
+        $admin_roles=[];
+        foreach ($admin->roles as $role) {
+            $admin_roles[$role->id]=1;
+        }
+
+        $permission = Permission::where('parent_id',0)->get();
+        $perms=[];
+        return view('admin.admin.edit', ['admin' => $admin,'roles'=>$roles,'admin_roles'=>$admin_roles,'permission'=>$permission,'perms'=>$perms]);
     }
 
     public function save(Request $request)
@@ -58,23 +76,22 @@ class AdminController extends Controller
         if ($validator->fails()) {
             return $this->sysMsg('',null,'error')->withErrors($validator);
         }
-        if ($request->has('article_id')) {
-            $artcile=Article::find($request->article_id);
+        if ($request->has('user_id')) {
+            $admin=Admin::find($request->user_id);
         } else {
-            $artcile = new Article();
+            $admin = new Admin();
         }
-        $artcile->title = $request->title;
-        $artcile->cat_id = $request->cat_id;
-        $artcile->contents = $request->input('contents','');
-        $artcile->author = $request->author;
-        $artcile->author_email = $request->author_email;
-        $artcile->keywords = $request->keywords;
-        $artcile->is_open = $request->input('is_open',0);
-        $artcile->file_url = $request->file_url;
-        $artcile->link = $request->link;
-        $artcile->description = $request->description;
-        $artcile->save();
-        return $this->sysMsg('文章保存成功',\URL::action('Admin\ArticleController@index'));
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        if($request->has(['password','password_confirm'])){
+            $admin->password=\Hash::make($request->password);
+        }
+        if($admin->save()){
+            $data=$request->data;
+            $admin->detachRoles();
+            $admin->attachRoles($data);
+        }
+        return $this->sysMsg('管理员保存成功',\URL::action('Admin\AdminController@index'));
     }
 
     public function ajax(Request $request)
