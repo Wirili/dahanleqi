@@ -66,22 +66,25 @@ class RoleController extends Controller
         if ($validator->fails()) {
             return $this->sysMsg('',null,'error')->withErrors($validator);
         }
-//        if ($request->has('role_id')) {
-//            $role=Role::find($request->role_id);
-//        } else {
-//            $role = new Role();
-//        }
-//        $role->title = $request->title;
-//        $role->cat_id = $request->cat_id;
-//        $role->contents = $request->input('contents','');
-//        $role->author = $request->author;
-//        $role->author_email = $request->author_email;
-//        $role->keywords = $request->keywords;
-//        $role->is_open = $request->input('is_open',0);
-//        $role->file_url = $request->file_url;
-//        $role->link = $request->link;
-//        $role->description = $request->description;
-//        $role->save();
+        if ($request->has('id')) {
+            $role=Role::find($request->id);
+        } else {
+            $role = new Role();
+        }
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->description = $request->description;
+        if($role->save()){
+            $data=$request->data;
+//            $perms=[];
+//            foreach ($data as $item) {
+//                $perms[]=[
+//                    'permission_id'=>$item,
+//                    'role_id'=>$role->id
+//                ];
+//            }
+            $role->savePermissions($data);
+        }
         return $this->sysMsg('角色保存成功',\URL::action('Admin\RoleController@index'));
     }
 

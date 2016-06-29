@@ -20,12 +20,16 @@
             <div class="tab-content" style="margin-top: 8px;">
                 <div role="tabpanel" class="tab-pane active" id="home">
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="title">@lang('role.display_name')</label>
+                        <label class="col-md-2 control-label" for="display_name">@lang('role.display_name')</label>
                         <div class="col-md-4"><input type="text" class="form-control input-sm" name="display_name" id="display_name" value="{{$role->display_name}}"></div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="is_open">@lang('role.name')</label>
+                        <label class="col-md-2 control-label" for="name">@lang('role.name')</label>
                         <div class="col-md-4"><input type="text" class="form-control input-sm" name="name" id="name" value="{{$role->name}}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="description">@lang('role.description')</label>
+                        <div class="col-md-4"><input type="text" class="form-control input-sm" name="description" id="description" value="{{$role->description}}"></div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">@lang('role.permission')</label>
@@ -34,10 +38,10 @@
                             <table class="table table-bordered">
                                 @foreach($permission as $item)
                                 <tr>
-                                    <td><label class="checkbox-inline"><input type="checkbox" name="data[]" id="{{$item->name}}" value="{{$item->id}}" @if(isset($perms[$item->id])) checked @endif>{{$item->display_name}}</label></td>
+                                    <td style="background: #f9f9f9;"><label class="checkbox-inline"><input type="checkbox" name="data[]" id="{{$item->name}}" value="{{$item->id}}" @if(isset($perms[$item->id])) checked @endif>{{$item->display_name}}</label></td>
                                     <td>
                                         @foreach($item->children as $child)
-                                            <label class="checkbox-inline"><input type="checkbox" name="data[]" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$item->id])) checked @endif>{{$child->display_name}}</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="data[]" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
                                         @endforeach
                                     </td>
                                 </tr>
@@ -57,4 +61,17 @@
         </div>
     </div>
 </div>
+<script>
+    $('#select_all').on('click',function(){
+        if(this.checked==true)
+            $("input[name='data[]']").each(function(){
+                debugger;
+                $(this).attr('checked','true');
+            })
+        else
+            $("input[name='data[]']").each(function(){
+                $(this).removeAttr('checked');
+            })
+    });
+</script>
 @endsection
