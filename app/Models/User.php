@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
+
     protected $primaryKey='user_id';
     /**
      * The attributes that are mass assignable.
