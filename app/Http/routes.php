@@ -72,7 +72,9 @@ Route::post('admin/admin/ajax', ['uses'=>'Admin\AdminController@ajax','as'=>'adm
 
 //权限控制路由
 Route::get('admin/role/index',['uses'=>'Admin\RoleController@index','as'=>'admin.role.index']);
+Route::get('admin/role/edit/{id}',['uses'=>'Admin\RoleController@edit','as'=>'admin.role.edit']);
 Route::get('admin/role/create',['uses'=>'Admin\RoleController@create','as'=>'admin.role.create']);
+Route::post('admin/role/save',['uses'=>'Admin\RoleController@save','as'=>'admin.role.save']);
 Route::post('admin/role/ajax', ['uses'=>'Admin\RoleController@ajax','as'=>'admin.role.ajax']);
 
 //获取图片

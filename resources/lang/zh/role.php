@@ -13,4 +13,5 @@ return [
     'name' => '角色代码',
     'display_name' => '角色名',
     'description' => '角色描述',
+    'permission' => '角色权限',
 ];

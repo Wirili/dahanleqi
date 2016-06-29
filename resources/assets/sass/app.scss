@@ -257,8 +257,7 @@ body{
   max-width: inherit;
 }
 
-.thumbnail{
-  &.active{
-    border:3px solid #1094fa;
-  }
+.table-bordered .checkbox-inline+.checkbox-inline{
+  margin-left: 0;
+  margin-right: 10px;
 }
