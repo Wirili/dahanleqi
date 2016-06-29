@@ -37,11 +37,11 @@
                             <div class="checkbox"><label style="margin:0 0 7px 10px ;"><input id="select_all" type="checkbox">全选</label></div>
                             <table class="table table-bordered">
                                 @foreach($permission as $item)
-                                <tr>
-                                    <td style="background: #f9f9f9;"><label class="checkbox-inline"><input type="checkbox" name="data[]" id="{{$item->name}}" value="{{$item->id}}" @if(isset($perms[$item->id])) checked @endif>{{$item->display_name}}</label></td>
+                                <tr data-permission="{{$item->id}}">
+                                    <td style="background: #f9f9f9;"><label class="checkbox-inline"><input type="checkbox" name="data[]" data-parent="{{$item->id}}"  id="{{$item->name}}" value="{{$item->id}}" @if(isset($perms[$item->id])) checked @endif>{{$item->display_name}}</label></td>
                                     <td>
                                         @foreach($item->children as $child)
-                                            <label class="checkbox-inline"><input type="checkbox" name="data[]" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
+                                            <label class="checkbox-inline"><input type="checkbox" name="data[]" data-child="{{$child->id}}" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
                                         @endforeach
                                     </td>
                                 </tr>
@@ -62,15 +62,39 @@
     </div>
 </div>
 <script>
-    $('#select_all').on('click',function(){
-        if(this.checked==true)
-            $("input[name='data[]']").each(function(item){
-                item.checked=true;
+    //全选
+    $(function(){
+        select_all();
+        $('#select_all').on('click', function () {
+            var me = this;
+            $("input[name='data[]']").each(function () {
+                this.checked = me.checked;
             })
-        else
-            $("input[name='data[]']").each(function(){
-                $(this).removeAttr('checked');
+        });
+        //子权限
+        $('tr[data-permission]').on('click', 'input[data-child]', function (parent) {
+            if (this.checked)
+                $(parent.delegateTarget).find('input[data-parent]')[0].checked = true;
+            select_all();
+        })
+        //父权限
+        $('tr[data-permission]').on('click', 'input[data-parent]', function (parent) {
+            var me = this;
+            $(parent.delegateTarget).find('input[data-child]').each(function () {
+                this.checked = me.checked;
             })
-    });
+            select_all();
+        })
+    })
+    function select_all(){
+        var all = true;
+        $("input[name='data[]']").each(function () {
+            if (this.checked == false) {
+                all = false;
+                return false;
+            }
+        })
+        $('#select_all')[0].checked = all;
+    }
 </script>
 @endsection
