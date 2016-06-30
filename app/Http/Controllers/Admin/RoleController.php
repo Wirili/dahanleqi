@@ -63,15 +63,11 @@ class RoleController extends Controller
             return $this->sysMsg('没有权限');
         }
         $role = Role::find($id);
-        if($role) {
-            if($role->users->isEmpty()){
+        if($role&&$role->users->isEmpty()) {
                 $role->delete();
                 return $this->sysMsg('角色删除成功',\URL::action('Admin\RoleController@index'));
-            }else{
-                return $this->sysMsg('角色删除失败，请确保角色没有被管理员使用后再尝试删除！',\URL::action('Admin\RoleController@index'));
-            }
         }else
-            return $this->sysMsg('角色不存在',\URL::action('Admin\RoleController@index'));
+            return $this->sysMsg('角色删除失败！<br>1、请确认角色是否存在<br>2、请确保角色没有被管理员使用！',\URL::action('Admin\RoleController@index'));
     }
 
     public function save(Request $request)

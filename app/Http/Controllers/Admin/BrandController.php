@@ -56,15 +56,11 @@ class BrandController extends Controller
             return $this->sysMsg('没有权限');
         }
         $brand = Brand::find($id);
-        if($brand) {
-            if($brand->goods->isEmpty()) {
-                $brand->delete();
-                return $this->sysMsg('品牌删除成功', \URL::action('Admin\BrandController@index'));
-            }else{
-                return $this->sysMsg('品牌删除失败，请确保品牌下面没有商品！', \URL::action('Admin\BrandController@index'));
-            }
+        if($brand&&$brand->goods->isEmpty()) {
+            $brand->delete();
+            return $this->sysMsg('品牌删除成功', \URL::action('Admin\BrandController@index'));
         }else
-            return $this->sysMsg('品牌不存在',\URL::action('Admin\BrandController@index'));
+            return $this->sysMsg('品牌删除失败！<br>1、请确认品牌是否存在<br>2、请确保品牌下面没有商品', \URL::action('Admin\BrandController@index'));
     }
 
     public function save(Request $request)

@@ -9,9 +9,9 @@
                 </div>
                 <div class="panel-body">
                     @if($type!='error')
-                        <p class="text-success">{{$content}}</p>
+                        <p class="text-success">{!! $content !!}</p>
                     @else
-                        <p class="text-danger">{{$content}}</p>
+                        <p class="text-danger">{!! $content !!}</p>
                         @if(count($errors)>0)
                             @foreach($errors->all() as $error)
                                 <p class=" text-danger">{{ $error }}</p>

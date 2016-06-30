@@ -66,11 +66,11 @@ class ArticleController extends Controller
             return $this->sysMsg('没有权限');
         }
         $article = Article::find($id);
-        if($article->count()) {
+        if($article) {
             $article->delete();
             return $this->sysMsg('文章删除成功',\URL::action('Admin\ArticleController@index'));
         }else
-            return $this->sysMsg('文章不存在',\URL::action('Admin\ArticleController@index'));
+            return $this->sysMsg('文章删除失败<br>请确认文章是否存在！',\URL::action('Admin\ArticleController@index'),'error');
     }
 
     public function save(Request $request)

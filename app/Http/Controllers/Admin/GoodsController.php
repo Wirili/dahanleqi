@@ -72,7 +72,7 @@ class GoodsController extends Controller
             return $this->sysMsg('没有权限');
         }
         $goods = Goods::find($id);
-        if($goods->count()) {
+        if($goods) {
             if($goods->images) {
                 foreach ($goods->images as $item) {
                    \Storage::disk('images')->delete($item->img_url);
@@ -84,7 +84,7 @@ class GoodsController extends Controller
             $goods->delete();
             return $this->sysMsg('商品删除成功',\URL::action('Admin\GoodsController@index'));
         }else
-            return $this->sysMsg('商品不存在',\URL::action('Admin\GoodsController@index'));
+            return $this->sysMsg('商品删除失败！<br>请确认商品是否存在',\URL::action('Admin\GoodsController@index'));
     }
 
     public function save(Request $request)
