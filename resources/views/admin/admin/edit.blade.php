@@ -47,15 +47,15 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="tab_permission">
                     <div class="form-group">
-                        <label class="col-md-2 control-label">@lang('role.permission')</label>
-                        <div class="col-md-4">
+                        <label class="col-md-2 control-label">@lang('admin.permission')</label>
+                        <div class="col-md-6">
                             <table class="table table-bordered">
                                 @foreach($permission as $item)
                                     <tr data-permission="{{$item->id}}">
                                         <td style="background: #f9f9f9;"><label class="checkbox-inline"><input type="checkbox" disabled="disabled" name="data[]" data-parent="{{$item->id}}"  id="{{$item->name}}" value="{{$item->id}}" @if(isset($perms[$item->id])) checked @endif>{{$item->display_name}}</label></td>
                                         <td>
                                             @foreach($item->children as $child)
-                                                <label class="checkbox-inline"><input type="checkbox" disabled="disabled" name="data[]" data-child="{{$child->id}}" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
+                                                <label class="checkbox-inline" style="width:120px;"><input type="checkbox" disabled="disabled" name="data[]" data-child="{{$child->id}}" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
                                             @endforeach
                                         </td>
                                     </tr>

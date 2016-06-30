@@ -26,34 +26,94 @@ class RoleTableSeeder extends Seeder
             'role_id'=>1
         ]];
         $permissions =[[
+            'name'=>'goods_show',
+            'display_name'=>'商品管理'
+        ],[
+            'name'=>'goods_new',
+            'parent_id'=>'1',
+            'display_name'=>'新增商品'
+        ],[
+            'name'=>'goods_edit',
+            'parent_id'=>'1',
+            'display_name'=>'修改商品'
+        ],[
+            'name'=>'goods_del',
+            'parent_id'=>'1',
+            'display_name'=>'删除商品'
+        ],[
+            'name'=>'goods_cat_show',
+            'display_name'=>'商品分类管理'
+        ],[
+            'name'=>'goods_cat_new',
+            'parent_id'=>'5',
+            'display_name'=>'新增商品分类'
+        ],[
+            'name'=>'goods_cat_edit',
+            'parent_id'=>'5',
+            'display_name'=>'修改商品分类'
+        ],[
+            'name'=>'goods_cat_del',
+            'parent_id'=>'5',
+            'display_name'=>'删除商品分类'
+        ],[
+            'name'=>'brand_show',
+            'display_name'=>'品牌管理'
+        ],[
+            'name'=>'brand_new',
+            'parent_id'=>'9',
+            'display_name'=>'新增品牌'
+        ],[
+            'name'=>'brand_edit',
+            'parent_id'=>'9',
+            'display_name'=>'修改品牌'
+        ],[
+            'name'=>'brand_del',
+            'parent_id'=>'9',
+            'display_name'=>'删除品牌'
+        ],[
             'name'=>'article_show',
             'display_name'=>'文章管理'
         ],[
             'name'=>'article_new',
-            'parent_id'=>'1',
+            'parent_id'=>'13',
             'display_name'=>'新增文章'
         ],[
             'name'=>'article_edit',
-            'parent_id'=>'1',
+            'parent_id'=>'13',
             'display_name'=>'修改文章'
         ],[
             'name'=>'article_del',
-            'parent_id'=>'1',
+            'parent_id'=>'13',
             'display_name'=>'删除文章'
+        ],[
+            'name'=>'article_cat_show',
+            'display_name'=>'文章分类管理'
+        ],[
+            'name'=>'article_cat_new',
+            'parent_id'=>'17',
+            'display_name'=>'新增文章分类'
+        ],[
+            'name'=>'article_cat_edit',
+            'parent_id'=>'17',
+            'display_name'=>'修改文章分类'
+        ],[
+            'name'=>'article_cat_del',
+            'parent_id'=>'17',
+            'display_name'=>'删除文章分类'
         ],[
             'name'=>'role_show',
             'display_name'=>'角色管理'
         ],[
             'name'=>'role_new',
-            'parent_id'=>'5',
+            'parent_id'=>'21',
             'display_name'=>'新增角色'
         ],[
             'name'=>'role_edit',
-            'parent_id'=>'5',
+            'parent_id'=>'21',
             'display_name'=>'修改角色'
         ],[
             'name'=>'role_del',
-            'parent_id'=>'5',
+            'parent_id'=>'21',
             'display_name'=>'删除角色'
         ]];
         $permission_role=[[
@@ -79,6 +139,54 @@ class RoleTableSeeder extends Seeder
             'role_id'=>1
         ],[
             'permission_id'=>8,
+            'role_id'=>1
+        ],[
+            'permission_id'=>9,
+            'role_id'=>1
+        ],[
+            'permission_id'=>10,
+            'role_id'=>1
+        ],[
+            'permission_id'=>11,
+            'role_id'=>1
+        ],[
+            'permission_id'=>12,
+            'role_id'=>1
+        ],[
+            'permission_id'=>13,
+            'role_id'=>1
+        ],[
+            'permission_id'=>14,
+            'role_id'=>1
+        ],[
+            'permission_id'=>15,
+            'role_id'=>1
+        ],[
+            'permission_id'=>16,
+            'role_id'=>1
+        ],[
+            'permission_id'=>17,
+            'role_id'=>1
+        ],[
+            'permission_id'=>18,
+            'role_id'=>1
+        ],[
+            'permission_id'=>19,
+            'role_id'=>1
+        ],[
+            'permission_id'=>20,
+            'role_id'=>1
+        ],[
+            'permission_id'=>21,
+            'role_id'=>1
+        ],[
+            'permission_id'=>22,
+            'role_id'=>1
+        ],[
+            'permission_id'=>23,
+            'role_id'=>1
+        ],[
+            'permission_id'=>24,
             'role_id'=>1
         ]];
 

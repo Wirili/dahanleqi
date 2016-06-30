@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">@lang('role.permission')</label>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="checkbox"><label style="margin:0 0 7px 10px ;"><input id="select_all" type="checkbox">全选</label></div>
                             <table class="table table-bordered">
                                 @foreach($permission as $item)
@@ -41,7 +41,7 @@
                                     <td style="background: #f9f9f9;"><label class="checkbox-inline"><input type="checkbox" name="data[]" data-parent="{{$item->id}}"  id="{{$item->name}}" value="{{$item->id}}" @if(isset($perms[$item->id])) checked @endif>{{$item->display_name}}</label></td>
                                     <td>
                                         @foreach($item->children as $child)
-                                            <label class="checkbox-inline"><input type="checkbox" name="data[]" data-child="{{$child->id}}" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
+                                            <label class="checkbox-inline" style="width:120px;"><input type="checkbox" name="data[]" data-child="{{$child->id}}" id="{{$child->name}}" value="{{$child->id}}" @if(isset($perms[$child->id])) checked @endif>{{$child->display_name}}</label>
                                         @endforeach
                                     </td>
                                 </tr>

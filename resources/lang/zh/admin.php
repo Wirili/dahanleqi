@@ -15,4 +15,5 @@ return [
     'password_confirm' => '密码确认',
     'roles' => '角色列表',
     'tab_permission'=>'权限列表',
+    'permission'=>'拥有权限',
 ];

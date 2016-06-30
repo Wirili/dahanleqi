@@ -36,11 +36,17 @@ class GoodsController extends Controller
 
     public function index()
     {
+        if(!$this->adminGate('goods_show')){
+            return $this->sysMsg('没有权限');
+        }
         return view('admin.goods.index');
     }
 
     public function edit($id)
     {
+        if(!$this->adminGate('goods_edit')){
+            return $this->sysMsg('没有权限');
+        }
         $goods = Goods::find($id);
         $goods_cat = Category::all();
         $brands = Brand::all();
@@ -49,6 +55,9 @@ class GoodsController extends Controller
 
     public function create()
     {
+        if(!$this->adminGate('goods_new')){
+            return $this->sysMsg('没有权限');
+        }
         $goods = new Goods();
         $goods->sort_order=50;
         $goods->click_count=0;
@@ -59,6 +68,9 @@ class GoodsController extends Controller
 
     public function del($id)
     {
+        if(!$this->adminGate('goods_del')){
+            return $this->sysMsg('没有权限');
+        }
         $goods = Goods::find($id);
         if($goods->count()) {
             if($goods->images) {
@@ -77,6 +89,9 @@ class GoodsController extends Controller
 
     public function save(Request $request)
     {
+        if(!$this->adminGate(['goods_new','goods_edit'])){
+            return $this->sysMsg('没有权限');
+        }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
             return $this->sysMsg('',null,'error')->withErrors($validator);

@@ -7,10 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\ArticleCat;
+use Validator;
 
 class ArticleCatController extends Controller
 {
     //
+    protected $rules = [
+        'cat_name' => 'required',
+    ];
+
+    protected $messages = [
+        'cat_name.required' => '请输入文章类别名称',
+    ];
+
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -21,7 +30,9 @@ class ArticleCatController extends Controller
      * @return mixed
      */
     public function index(){
-//        $cat_list=ArticleCat::where('parent_id',0)->get();
+        if(!$this->adminGate('article_cat_show')){
+            return $this->sysMsg('没有权限');
+        }
         $cat_list=$this->getCatList(0);
         return view('admin.articlecat.index',['cat_list'=>$cat_list]);
     }
@@ -33,9 +44,12 @@ class ArticleCatController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->adminGate('article_cat_edit')){
+            return $this->sysMsg('没有权限');
+        }
         $cat = ArticleCat::find($id);
         //不允许选择上级类别为子类别
-        $child_cat=array_column($this->getCatList($id),'cat_id');
+        $child_cat=array_merge(array_column($this->getCatList($id),'cat_id'),[$id]);
         $article_cat = ArticleCat::whereNotIn('cat_id',$child_cat)->get();
         return view('admin.articlecat.edit', ['cat' => $cat, 'article_cat' => $article_cat]);
     }
@@ -46,11 +60,15 @@ class ArticleCatController extends Controller
      */
     public function create()
     {
-        $cat = new ArticleCat();
-        $cat->sort_order=50;
-        $cat->show_in_nav=1;
+        if(!$this->adminGate('article_cat_new')){
+            return $this->sysMsg('没有权限');
+        }
+        $cat = new ArticleCat([
+            'sort_order'=>50,
+            'show_in_nav'=>1
+        ]);
         $article_cat = ArticleCat::all();
-        return view('admin.article.cat_edit', ['cat' => $cat, 'article_cat' => $article_cat]);
+        return view('admin.articlecat.edit', ['cat' => $cat, 'article_cat' => $article_cat]);
     }
 
     /**
@@ -60,6 +78,13 @@ class ArticleCatController extends Controller
      */
     public function save(Request $request)
     {
+        if(!$this->adminGate(['article_cat_new','article_cat_edit'])){
+            return $this->sysMsg('没有权限');
+        }
+        $validator = Validator::make($request->all(), $this->rules, $this->messages);
+        if ($validator->fails()) {
+            return $this->sysMsg('',null,'error')->withErrors($validator);
+        }
         if ($request->has('cat_id')) {
             $cat=ArticleCat::find($request->cat_id);
         } else {
@@ -78,10 +103,17 @@ class ArticleCatController extends Controller
 
     public function del($id)
     {
+        if(!$this->adminGate('article_cat_del')){
+            return $this->sysMsg('没有权限');
+        }
         $cat = ArticleCat::find($id);
-        if($cat->count()) {
-            $cat->delete();
-            return $this->sysMsg('文章类别删除成功',\URL::action('Admin\ArticleCatController@index'));
+        if($cat) {
+            if($cat->articles->isEmpty()&&$cat->child_cat->isEmpty()) {
+                $cat->delete();
+                return $this->sysMsg('文章类别删除成功', \URL::action('Admin\ArticleCatController@index'));
+            }else{
+                return $this->sysMsg('文章类别删除失败，请确保删掉的文章类别不包含子类别并且该类别下没有文章！', \URL::action('Admin\ArticleCatController@index'));
+            }
         }else
             return $this->sysMsg('文章类别不存在',\URL::action('Admin\ArticleCatController@index'));
     }

@@ -26,34 +26,52 @@ class BrandController extends Controller
     }
     public function index()
     {
+        if(!$this->adminGate('brand_show')){
+            return $this->sysMsg('没有权限');
+        }
         return view('admin.brand.index');
     }
 
     public function edit($id)
     {
+        if(!$this->adminGate('brand_edit')){
+            return $this->sysMsg('没有权限');
+        }
         $brand = Brand::find($id);
         return view('admin.brand.edit', ['brand' => $brand]);
     }
 
     public function create()
     {
+        if(!$this->adminGate('brand_new')){
+            return $this->sysMsg('没有权限');
+        }
         $brand = new Brand();
         return view('admin.brand.edit', ['brand' => $brand]);
     }
 
     public function del($id)
     {
+        if(!$this->adminGate('brand_del')){
+            return $this->sysMsg('没有权限');
+        }
         $brand = Brand::find($id);
-        if($brand->count()) {
-            $brand->delete();
-            return $this->sysMsg('品牌删除成功',\URL::action('Admin\BrandController@index'));
+        if($brand) {
+            if($brand->goods->isEmpty()) {
+                $brand->delete();
+                return $this->sysMsg('品牌删除成功', \URL::action('Admin\BrandController@index'));
+            }else{
+                return $this->sysMsg('品牌删除失败，请确保品牌下面没有商品！', \URL::action('Admin\BrandController@index'));
+            }
         }else
             return $this->sysMsg('品牌不存在',\URL::action('Admin\BrandController@index'));
     }
 
     public function save(Request $request)
     {
-
+        if(!$this->adminGate(['brand_new','brand_edit'])){
+            return $this->sysMsg('没有权限');
+        }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
             return $this->sysMsg('',null,'error')->withErrors($validator);
@@ -81,7 +99,6 @@ class BrandController extends Controller
             $brand->brand_logo = $filename;
             $brand->update();
         }
-
         return $this->sysMsg('品牌保存成功',\URL::action('Admin\BrandController@index'));
     }
 
