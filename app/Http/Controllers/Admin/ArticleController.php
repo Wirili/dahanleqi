@@ -33,9 +33,10 @@ class ArticleController extends Controller
 
     public function index()
     {
-//        $list=Article::all()->forPage(1,15);
-//        return view('admin.article_index',['list'=>$list]);
-       return view('admin.article.index');
+        if(!$this->adminGate('article_show')){
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
+        }
+        return view('admin.article.index');
     }
 
     public function edit($id)

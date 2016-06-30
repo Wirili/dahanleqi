@@ -49,8 +49,8 @@ class ArticleCatController extends Controller
         }
         $cat = ArticleCat::find($id);
         //不允许选择上级类别为子类别
-        $child_cat=array_merge(array_column($this->getCatList($id),'cat_id'),[$id]);
-        $article_cat = ArticleCat::whereNotIn('cat_id',$child_cat)->get();
+        $children=array_merge(array_column($this->getCatList($id),'cat_id'),[$id]);
+        $article_cat = ArticleCat::whereNotIn('cat_id',$children)->get();
         return view('admin.articlecat.edit', ['cat' => $cat, 'article_cat' => $article_cat]);
     }
 
@@ -92,8 +92,8 @@ class ArticleCatController extends Controller
         }
         $cat->cat_name  = $request->cat_name;
         $cat->parent_id = $request->parent_id;
-        $cat->show_in_nav = $request->show_in_nav;
-        $cat->sort_order = $request->sort_order;
+        $cat->show_in_nav = $request->input('show_in_nav',0);
+        $cat->sort_order = $request->input('sort_order',0);
         $cat->keywords = $request->keywords;
         $cat->cat_desc = $request->cat_desc;
         $cat->save();
@@ -107,11 +107,11 @@ class ArticleCatController extends Controller
             return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $cat = ArticleCat::find($id);
-        if($cat&&$cat->articles->isEmpty()&&$cat->child_cat->isEmpty()) {
+        if($cat&&$cat->articles->isEmpty()&&$cat->children->isEmpty()) {
             $cat->delete();
             return $this->sysMsg(trans('article.cat.del_success'), \URL::action('Admin\ArticleCatController@index'));
         }else
-            return $this->sysMsg(trans('article.cat.del_fail'), \URL::action('Admin\ArticleCatController@index','error'));
+            return $this->sysMsg(trans('article.cat.del_fail'), \URL::action('Admin\ArticleCatController@index'),'error');
 
     }
 
@@ -128,7 +128,7 @@ class ArticleCatController extends Controller
             $itemArr = $item->toArray();
             $itemArr['level']=$level;
             $list[]=$itemArr;
-            if ($item->child_cat()->count() > 0) {
+            if (!$item->children->isEmpty()) {
                 $this->getCatList($item->cat_id,$level+1,$list);
             }
         }

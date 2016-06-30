@@ -10,7 +10,7 @@ class ArticleCat extends Model
     protected $primaryKey='cat_id';
     protected $fillable=['sort_order','show_in_nav'];
 
-    public function child_cat(){
+    public function children(){
         return $this->hasMany('App\Models\ArticleCat','parent_id','cat_id');
     }
 

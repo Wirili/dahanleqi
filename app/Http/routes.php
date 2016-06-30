@@ -19,6 +19,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+//首页
 Route::get('admin', ['uses'=>'Admin\IndexController@index','as'=>'admin.index']);
 Route::get('admin/welcome', ['uses'=>'Admin\IndexController@welcome','as'=>'admin.welcome']);
 Route::get('admin/setting', ['uses'=>'Admin\IndexController@getSetting','as'=>'admin.get_setting']);
@@ -50,6 +51,10 @@ Route::post('admin/goods/ajax_img', ['uses'=>'Admin\GoodsController@ajax_img','a
 
 //商品类别路由
 Route::get('admin/category/index', ['uses'=>'Admin\CategoryController@index','as'=>'admin.category.index']);
+Route::get('admin/category/edit/{id}', ['uses'=>'Admin\CategoryController@edit','as'=>'admin.category.edit']);
+Route::get('admin/category/create', ['uses'=>'Admin\CategoryController@create','as'=>'admin.category.create']);
+Route::post('admin/category/save', ['uses'=>'Admin\CategoryController@save','as'=>'admin.category.save']);
+Route::get('admin/category/del/{id}', ['uses'=>'Admin\CategoryController@del','as'=>'admin.category.del']);
 
 //文章路由
 Route::get('admin/article/index', ['uses'=>'Admin\ArticleController@index','as'=>'admin.article.index']);
