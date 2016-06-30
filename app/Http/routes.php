@@ -35,7 +35,7 @@ Route::post('password/reset', ['uses'=>'Home\PasswordController@reset', 'as'=>'p
  * 后台管理路由列表
  */
 //首页
-Route::get('admin', ['uses'=>'Admin\IndexController@index','as'=>'admin.index']);
+Route::get('admin', ['uses'=>'Admin\IndexController@index','as'=>'admin']);
 Route::get('admin/welcome', ['uses'=>'Admin\IndexController@welcome','as'=>'admin.welcome']);
 Route::get('admin/setting', ['uses'=>'Admin\IndexController@getSetting','as'=>'admin.get_setting']);
 Route::post('admin/setting', ['uses'=>'Admin\IndexController@postSetting','as'=>'admin.post_setting']);
