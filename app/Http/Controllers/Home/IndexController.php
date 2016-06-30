@@ -15,6 +15,6 @@ class IndexController extends Controller
     }
 
     public function index(){
-        return view('default.welcome');
+        return view('default.index');
     }
 }
