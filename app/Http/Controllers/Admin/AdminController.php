@@ -8,7 +8,7 @@ use App\Models\Permission;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use Validator,Redirect;
 
 class AdminController extends Controller

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Brand as Brand;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use Illuminate\Support\Facades\Storage;
 use Validator,Redirect;
 

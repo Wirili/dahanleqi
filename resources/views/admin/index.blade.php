@@ -8,18 +8,18 @@
     <title>后台管理</title>
 
     <!-- Styles -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type='text/css'>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('common/css/bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('common/css/font-awesome.min.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('admin/css/app.css')}}" rel="stylesheet" type='text/css'>
     {{--<link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type='text/css'>--}}
-    <link href="{{asset('css/dataTables.bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('admin/css/dataTables.bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
 
     <!-- JavaScripts -->
-    <script src="{{asset('js/jquery-1.12.3.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('common/js/jquery-1.12.3.min.js')}}"></script>
+    <script src="{{asset('common/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin/js/app.js')}}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
