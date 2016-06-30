@@ -31,7 +31,7 @@ class ArticleCatController extends Controller
      */
     public function index(){
         if(!$this->adminGate('article_cat_show')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $cat_list=$this->getCatList(0);
         return view('admin.articlecat.index',['cat_list'=>$cat_list]);
@@ -45,7 +45,7 @@ class ArticleCatController extends Controller
     public function edit($id)
     {
         if(!$this->adminGate('article_cat_edit')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $cat = ArticleCat::find($id);
         //不允许选择上级类别为子类别
@@ -61,7 +61,7 @@ class ArticleCatController extends Controller
     public function create()
     {
         if(!$this->adminGate('article_cat_new')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $cat = new ArticleCat([
             'sort_order'=>50,
@@ -79,7 +79,7 @@ class ArticleCatController extends Controller
     public function save(Request $request)
     {
         if(!$this->adminGate(['article_cat_new','article_cat_edit'])){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
@@ -97,25 +97,22 @@ class ArticleCatController extends Controller
         $cat->keywords = $request->keywords;
         $cat->cat_desc = $request->cat_desc;
         $cat->save();
-        return $this->sysMsg('文章类别保存成功',\URL::action('Admin\ArticleCatController@index'));
+        return $this->sysMsg(trans('article.cat.save_success'),\URL::action('Admin\ArticleCatController@index'));
     }
 
 
     public function del($id)
     {
         if(!$this->adminGate('article_cat_del')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $cat = ArticleCat::find($id);
-        if($cat) {
-            if($cat->articles->isEmpty()&&$cat->child_cat->isEmpty()) {
-                $cat->delete();
-                return $this->sysMsg('文章类别删除成功', \URL::action('Admin\ArticleCatController@index'));
-            }else{
-                return $this->sysMsg('文章类别删除失败，请确保删掉的文章类别不包含子类别并且该类别下没有文章！', \URL::action('Admin\ArticleCatController@index'));
-            }
+        if($cat&&$cat->articles->isEmpty()&&$cat->child_cat->isEmpty()) {
+            $cat->delete();
+            return $this->sysMsg(trans('article.cat.del_success'), \URL::action('Admin\ArticleCatController@index'));
         }else
-            return $this->sysMsg('文章类别不存在',\URL::action('Admin\ArticleCatController@index'));
+            return $this->sysMsg(trans('article.cat.del_fail'), \URL::action('Admin\ArticleCatController@index','error'));
+
     }
 
     /**

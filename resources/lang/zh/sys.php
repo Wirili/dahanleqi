@@ -21,6 +21,7 @@ return [
     'create_time' => '添加日期',
     'yes'=>'是',
     'no'=>'否',
+    'no_permission'=>'没有操作权限！',
     'no_timezone'=>'没有设置时区',
 
     'sys_info'=>'系统信息',

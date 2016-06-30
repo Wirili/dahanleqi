@@ -34,4 +34,8 @@ return [
     'goods_desc_short' => '简单描述',
     'goods_desc' => '详细描述',
     'pls' => '请选择',
+
+    'save_success'=>'商品保存成功',
+    'del_success'=>'商品删除成功',
+    'del_fail'=>'商品删除失败！<br>请确认商品是否存在',
 ];

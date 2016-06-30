@@ -41,7 +41,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         if(!$this->adminGate('article_edit')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $article = Article::find($id);
         $article_cat = ArticleCat::all();
@@ -51,7 +51,7 @@ class ArticleController extends Controller
     public function create()
     {
         if(!$this->adminGate('article_new')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $article = new Article([
             'is_open' => 1
@@ -63,20 +63,20 @@ class ArticleController extends Controller
     public function del($id)
     {
         if(!$this->adminGate('article_del')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $article = Article::find($id);
         if($article) {
             $article->delete();
-            return $this->sysMsg('文章删除成功',\URL::action('Admin\ArticleController@index'));
+            return $this->sysMsg(trans('article.del_success'),\URL::action('Admin\ArticleController@index'));
         }else
-            return $this->sysMsg('文章删除失败<br>请确认文章是否存在！',\URL::action('Admin\ArticleController@index'),'error');
+            return $this->sysMsg(trans('article.del_fail'),\URL::action('Admin\ArticleController@index'),'error');
     }
 
     public function save(Request $request)
     {
         if(!$this->adminGate(['article_edit','article_new'])){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
@@ -98,7 +98,7 @@ class ArticleController extends Controller
         $artcile->link = $request->link;
         $artcile->description = $request->description;
         $artcile->save();
-        return $this->sysMsg('文章保存成功',\URL::action('Admin\ArticleController@index'));
+        return $this->sysMsg(trans('article.save_success'),\URL::action('Admin\ArticleController@index'));
     }
 
     public function ajax(Request $request)

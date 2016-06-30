@@ -29,13 +29,16 @@ class RoleController extends Controller
 
     public function index()
     {
+        if(!$this->adminGate('role_show')){
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
+        }
         return view('admin.role.index');
     }
 
     public function edit($id)
     {
         if(!$this->adminGate('role_edit')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $role = Role::find($id);
         $permission = Permission::where('parent_id',0)->get();
@@ -49,7 +52,7 @@ class RoleController extends Controller
     public function create()
     {
         if(!$this->adminGate('role_new')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $role = new Role();
         $permission = Permission::where('parent_id',0)->get();
@@ -60,20 +63,20 @@ class RoleController extends Controller
     public function del($id)
     {
         if(!$this->adminGate('role_del')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $role = Role::find($id);
         if($role&&$role->users->isEmpty()) {
                 $role->delete();
-                return $this->sysMsg('角色删除成功',\URL::action('Admin\RoleController@index'));
+                return $this->sysMsg(trans('role.del_success'),\URL::action('Admin\RoleController@index'));
         }else
-            return $this->sysMsg('角色删除失败！<br>1、请确认角色是否存在<br>2、请确保角色没有被管理员使用！',\URL::action('Admin\RoleController@index'));
+            return $this->sysMsg(trans('role.del_fail'),\URL::action('Admin\RoleController@index'),'error');
     }
 
     public function save(Request $request)
     {
         if(!$this->adminGate(['role_edit','role_new'])){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
@@ -91,7 +94,7 @@ class RoleController extends Controller
             $data=$request->data;
             $role->savePermissions($data);
         }
-        return $this->sysMsg('角色保存成功',\URL::action('Admin\RoleController@index'));
+        return $this->sysMsg(trans('role.save_success'),\URL::action('Admin\RoleController@index'));
     }
 
     public function ajax(Request $request)

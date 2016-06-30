@@ -37,7 +37,7 @@ class GoodsController extends Controller
     public function index()
     {
         if(!$this->adminGate('goods_show')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         return view('admin.goods.index');
     }
@@ -45,7 +45,7 @@ class GoodsController extends Controller
     public function edit($id)
     {
         if(!$this->adminGate('goods_edit')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $goods = Goods::find($id);
         $goods_cat = Category::all();
@@ -56,7 +56,7 @@ class GoodsController extends Controller
     public function create()
     {
         if(!$this->adminGate('goods_new')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $goods = new Goods();
         $goods->sort_order=50;
@@ -69,7 +69,7 @@ class GoodsController extends Controller
     public function del($id)
     {
         if(!$this->adminGate('goods_del')){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $goods = Goods::find($id);
         if($goods) {
@@ -82,15 +82,15 @@ class GoodsController extends Controller
                 }
             }
             $goods->delete();
-            return $this->sysMsg('商品删除成功',\URL::action('Admin\GoodsController@index'));
+            return $this->sysMsg(trans('goods.del_success'),\URL::action('Admin\GoodsController@index'));
         }else
-            return $this->sysMsg('商品删除失败！<br>请确认商品是否存在',\URL::action('Admin\GoodsController@index'));
+            return $this->sysMsg(trans('goods.del_fail'),\URL::action('Admin\GoodsController@index'),'error');
     }
 
     public function save(Request $request)
     {
         if(!$this->adminGate(['goods_new','goods_edit'])){
-            return $this->sysMsg('没有权限');
+            return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
         $validator = Validator::make($request->all(), $this->rules, $this->messages);
         if ($validator->fails()) {
@@ -155,7 +155,7 @@ class GoodsController extends Controller
             $goods->img_id = GoodsImage::where('goods_id',$goods->goods_id)->first()->img_id ?? 0;
             $goods->save();
         }
-        return $this->sysMsg('商品保存成功',\URL::route('admin.goods.index'));
+        return $this->sysMsg(trans('goods.save_success'),\URL::route('admin.goods.index'));
     }
 
     public function ajax(Request $request)
