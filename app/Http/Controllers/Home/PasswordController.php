@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Home\Auth;
+namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Home\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
@@ -19,6 +18,9 @@ class PasswordController extends Controller
     */
 
     use ResetsPasswords;
+    
+    protected $linkRequestView='default.passwords_email';
+    protected $resetView ='default.reset';
 
     /**
      * Create a new password controller instance.

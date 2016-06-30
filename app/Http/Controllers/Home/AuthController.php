@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Home\Auth;
+namespace App\Http\Controllers\Home;
 
 use App\Models\User;
 use Validator;
-use App\Http\Controllers\Home\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -29,7 +28,9 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
-
+    protected $redirectAfterLogout='/';
+    protected $loginView = 'default.login';
+    protected $registerView = 'default.register';
     /**
      * Create a new authentication controller instance.
      *

@@ -10,15 +10,35 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/*
+ * 前台路由列表
+ */
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+// Authentication Routes...
+Route::get('login', ['uses'=>'Home\AuthController@showLoginForm', 'as'=>'get_login']);
+Route::post('login', ['uses'=>'Home\AuthController@login', 'as'=>'post_login']);
+Route::get('logout', ['uses'=>'Home\AuthController@logout', 'as'=>'logout']);
 
-Route::get('/home', 'HomeController@index');
+// Registration Routes...
+Route::get('register', ['uses'=>'Home\AuthController@showRegistrationForm', 'as'=>'get_register']);
+Route::post('register', ['uses'=>'Home\AuthController@register', 'as'=>'post_register']);
 
+// Password Reset Routes...
+Route::get('password/reset/{token?}', ['uses'=>'Home\PasswordController@showResetForm', 'as'=>'password.reset.token']);
+Route::post('password/email', ['uses'=>'Home\PasswordController@sendResetLinkEmail', 'as'=>'password.email']);
+Route::post('password/reset', ['uses'=>'Home\PasswordController@reset', 'as'=>'password.reset']);
+
+//Route::auth();
+
+
+/*
+ * 后台管理路由列表
+ */
 //首页
 Route::get('admin', ['uses'=>'Admin\IndexController@index','as'=>'admin.index']);
 Route::get('admin/welcome', ['uses'=>'Admin\IndexController@welcome','as'=>'admin.welcome']);
