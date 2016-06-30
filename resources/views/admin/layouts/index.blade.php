@@ -11,33 +11,33 @@
     <link href="{{asset('common/css/bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
     <link href="{{asset('common/css/font-awesome.min.css')}}" rel="stylesheet" type='text/css'>
     <!-- 上传样式 -->
-    <link href="{{asset('admin/css/fileinput.min.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('default_admin/css/fileinput.min.css')}}" rel="stylesheet" type='text/css'>
     <!-- end -->
-    <link href="{{asset('admin/css/app.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('default_admin/css/app.css')}}" rel="stylesheet" type='text/css'>
     {{--<link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" type='text/css'>--}}
-    <link href="{{asset('admin/css/dataTables.bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
-    <link href="{{asset('admin/css/buttons.bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('default_admin/css/dataTables.bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
+    <link href="{{asset('default_admin/css/buttons.bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
 
     <!-- JavaScripts -->
     <script src="{{asset('common/js/jquery-1.12.3.min.js')}}"></script>
     <!-- 上传js -->
-    <script src="{{asset('admin/js/plugins/canvas-to-blob.min.js')}}"></script>
-    <script src="{{asset('admin/js/plugins/sortable.min.js')}}"></script>
-    <script src="{{asset('admin/js/plugins/purify.min.js')}}"></script>
-    <script src="{{asset('admin/js/fileinput.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/plugins/canvas-to-blob.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/plugins/sortable.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/plugins/purify.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/fileinput.min.js')}}"></script>
     <!-- end -->
     <script src="{{asset('common/js/bootstrap.min.js')}}"></script>
 
-    <script src="{{asset('admin/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('admin/js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/dataTables.bootstrap.min.js')}}"></script>
 
-    <script src="{{asset('admin/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('admin/js/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('default_admin/js/buttons.bootstrap.min.js')}}"></script>
     <!-- 上传js -->
-    <script src="{{asset('admin/themes/fa/fa.js')}}"></script>
-    <script src="{{asset('admin/js/locales/zh.js')}}"></script>
+    <script src="{{asset('default_admin/themes/fa/fa.js')}}"></script>
+    <script src="{{asset('default_admin/js/locales/zh.js')}}"></script>
     <!-- end -->
-    <script src="{{asset('admin/js/app.js')}}"></script>
+    <script src="{{asset('default_admin/js/app.js')}}"></script>
 
     @include('UEditor::head')
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
