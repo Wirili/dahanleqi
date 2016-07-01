@@ -18,7 +18,7 @@ class CategoryController extends Controller
     {
         $cat=Category::find($id);
         if($cat){
-            $goods=$cat->goods->all();
+            $goods=$cat->goods()->orderBy('goods_id','desc')->paginate(12);
         }
         return view('default.category',['cat'=>$cat,'goods'=>$goods]);
     }

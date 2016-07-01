@@ -14,7 +14,7 @@ class GoodsTableSeeder extends Seeder
     {
         //
         $lists=[];
-        for($i=1;$i<=105;$i++) {
+        for($i=1;$i<=1000;$i++) {
             $lists[] =[
                 'goods_id'=>$i,
                 'cat_id'=>1,
