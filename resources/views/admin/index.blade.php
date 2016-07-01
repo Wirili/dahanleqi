@@ -36,6 +36,7 @@
     <ul class="notification-menu">
         <li><a class="dropdown-toggle" href="{{ URL::route('admin.logout') }}"><i class="fa fa-sign-out"></i> 注销</a></li>
         <li><a class="dropdown-toggle" href="{{ URL::route('admin.get_setting') }}" target="mainframe"><i class="fa fa-gear"></i> 设置</a></li>
+        <li><a class="dropdown-toggle" href="{{ URL::route('index') }}" target="_blank"><i class="fa fa-tv"></i> 预览</a></li>
         <li><a class="dropdown-toggle" href="javascript:void(0);"><i class="fa fa-user"></i> {{ Auth::guard('admin')->user()->name }}</a></li>
     </ul>
 </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Admin\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use Validator;
 
@@ -95,10 +95,23 @@ class CategoryController extends Controller
         $cat->cat_name  = $request->cat_name;
         $cat->parent_id = $request->parent_id;
         $cat->is_show = $request->input('is_show',0);
+        $cat->show_in_nav = $request->input('show_in_nav',0);
         $cat->sort_order = $request->input('sort_order',0);
         $cat->keywords = $request->keywords;
         $cat->cat_desc = $request->cat_desc;
         $cat->save();
+
+        $file=$request->file('show_img_upload');
+        $filename="/data/show_img/".$cat->cat_id . "_".date('YmdHis').".jpg";
+
+        if($file){
+            if($cat->show_img && Storage::disk('images')->exists($cat->show_img)){
+                Storage::disk('images')->delete($cat->show_img);
+            }
+            Storage::disk('images')->put($filename,\File::get($file));
+            $cat->show_img = $filename;
+            $cat->update();
+        }
         return $this->sysMsg(trans('category.save_success'),\URL::action('Admin\CategoryController@index'));
     }
 
@@ -110,6 +123,9 @@ class CategoryController extends Controller
         }
         $cat = Category::find($id);
         if($cat&&$cat->goods->isEmpty()&&$cat->children->isEmpty()) {
+            if($cat->show_img && Storage::disk('images')->exists($cat->show_img)){
+                Storage::disk('images')->delete($cat->show_img);
+            }
             $cat->delete();
             return $this->sysMsg(trans('category.del_success'), \URL::action('Admin\CategoryController@index'));
         }else

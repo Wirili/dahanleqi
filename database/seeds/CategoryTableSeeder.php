@@ -14,15 +14,20 @@ class CategoryTableSeeder extends Seeder
     {
         //
         $lists=[[
-            'cat_id'=>1,
-            'cat_name'=>'日用百货',
+            'cat_name'=>'超能阿布',
             'cat_desc'=>'',
-            'keywords'=>''
+            'keywords'=>'',
+            'show_in_nav'=>true
         ],[
-            'cat_id'=>2,
-            'cat_name'=>'洗护用品',
+            'cat_name'=>'芦荟系列',
             'cat_desc'=>'',
-            'keywords'=>''
+            'keywords'=>'',
+            'show_in_nav'=>true
+        ],[
+            'cat_name'=>'韩专系列',
+            'cat_desc'=>'',
+            'keywords'=>'',
+            'show_in_nav'=>true
         ]];
         foreach ($lists as $list) {
             Category::create($list);

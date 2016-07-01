@@ -16,6 +16,7 @@
  */
 
 Route::get('/', ['uses'=>'Home\IndexController@index', 'as'=>'index']);
+Route::get('/index', ['uses'=>'Home\IndexController@index', 'as'=>'index']);
 
 // Authentication Routes...
 Route::get('login', ['uses'=>'Home\AuthController@showLoginForm', 'as'=>'get_login']);
@@ -30,6 +31,9 @@ Route::post('register', ['uses'=>'Home\AuthController@register', 'as'=>'post_reg
 Route::get('password/reset/{token?}', ['uses'=>'Home\PasswordController@showResetForm', 'as'=>'password.reset.token']);
 Route::post('password/email', ['uses'=>'Home\PasswordController@sendResetLinkEmail', 'as'=>'password.email']);
 Route::post('password/reset', ['uses'=>'Home\PasswordController@reset', 'as'=>'password.reset']);
+
+//商品类别页
+Route::get('category/{id}', ['uses'=>'Home\CategoryController@index', 'as'=>'category']);
 
 /*
  * 后台管理路由列表

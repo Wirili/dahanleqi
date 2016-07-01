@@ -9,7 +9,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/category/save') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/category/save') }}"  enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="cat_name">@lang('category.cat_name')</label>
@@ -27,8 +27,22 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-2 control-label" for="show_img_upload">{{trans('category.show_img')}}</label>
+                    <div class="col-md-3"><input type="file" class="input-sm" name="show_img_upload" id="show_img_upload"></div>
+                    @if($cat->show_img)
+                        <div class="col-md-1"><i class="fa fa-picture-o fa-lg input-sm" data-toggle="popover" data-trigger="hover" data-content='<img src="{{$cat->show_img}}" width="500">'></i></div>
+                        <script>
+                            $('[data-toggle="popover"]').popover({html:true});
+                        </script>
+                    @endif
+                </div>
+                <div class="form-group">
                     <label class="col-md-2 control-label" for="is_show">@lang('category.is_show')</label>
                     <div class="col-md-4"><input class="checkbox" type="checkbox" name="is_show" id="is_show" @if($cat->is_show==1) checked @endif value="1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="show_in_nav">@lang('category.show_in_nav')</label>
+                    <div class="col-md-4"><input class="checkbox" type="checkbox" name="show_in_nav" id="show_in_nav" @if($cat->show_in_nav==1) checked @endif value="1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="sort_order">@lang('sys.sort')</label>
