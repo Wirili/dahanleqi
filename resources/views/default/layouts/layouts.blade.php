@@ -41,9 +41,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-home">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{URL::route('index')}}">首页</a></li>
+                    <li @if(URL::current()==URL::route('index')) class="active" @endif><a href="{{URL::route('index')}}">首页</a></li>
                     @foreach(\App\Models\Category::where('show_in_nav',1)->get() as $item)
-                        <li><a href="{{URL::route('category',['id'=>$item->cat_id])}}">{{$item->cat_name}}</a></li>
+                        <li @if(URL::current()==URL::route('category',['id'=>$item->cat_id])) class="active" @endif><a href="{{URL::route('category',['id'=>$item->cat_id])}}">{{$item->cat_name}}</a></li>
                     @endforeach
                     <li><a href="#">加盟代理</a></li>
                     <li><a href="#">联系我们</a></li>

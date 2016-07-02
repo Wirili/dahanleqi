@@ -158,6 +158,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Overtrue\LaravelWechat\ServiceProvider::class,
     ],
 
     /*
@@ -204,6 +206,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Wechat' => Overtrue\LaravelWechat\Facade::class,
     ],
 
 ];

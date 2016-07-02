@@ -34,6 +34,13 @@ Route::post('password/reset', ['uses'=>'Home\PasswordController@reset', 'as'=>'p
 
 //商品类别页
 Route::get('category/{id}', ['uses'=>'Home\CategoryController@index', 'as'=>'category']);
+Route::get('qrcode', ['uses'=>'Home\CategoryController@qrcode', 'as'=>'qrcode']);
+Route::get('xqrcode', ['uses'=>'Home\CategoryController@xqrcode', 'as'=>'xqrcode']);
+
+//微信路由
+Route::group(['prefix' => 'admin','middleware' => 'wechat'], function () {
+    Route::get('server',['uses'=>'Wechat/ServerController@index','as'=>'wechat.server.index']);
+});
 
 /*
  * 后台管理路由列表
