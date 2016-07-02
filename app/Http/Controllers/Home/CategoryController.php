@@ -38,18 +38,13 @@ class CategoryController extends Controller
 
     public function xqrcode()
     {
-//        $lists=DB::table('qrcode')->select('xqrcode')->distinct()->get();
-//        foreach ($lists as $list) {
-//            $filename='/data/xqrcode_img/'.$list->xqrcode.'.png';
-//            if(!\Storage::disk('images')->exists($filename))
-//                \Storage::disk('images')->put($filename, \QrCode::format('png')->size(400)->generate('http://weixin.qq.com/r/9ENocGfEDjpxrSMT9xbm-'.$list->xqrcode));
-//        }
-//        dd($lists);
-//        return '成功';
-        $wechat = app('EasyWeChat\\Foundation\\Application', [config('wechat')]);
-        $wechat->oauth->user();
-        $wechat1 = \Wechat::oauth()->user();
-        $wechat2=\Wechat::user();
+        $lists=DB::table('qrcode')->select('xqrcode')->distinct()->get();
+        foreach ($lists as $list) {
+            $filename='/data/xqrcode_img/'.$list->xqrcode.'.png';
+            if(!\Storage::disk('images')->exists($filename))
+                \Storage::disk('images')->put($filename, \QrCode::format('png')->size(400)->generate('http://weixin.qq.com/r/9ENocGfEDjpxrSMT9xbm-'.$list->xqrcode));
+        }
+        dd($lists);
         return '成功';
     }
 }

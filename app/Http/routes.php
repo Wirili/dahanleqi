@@ -38,8 +38,9 @@ Route::get('qrcode', ['uses'=>'Home\CategoryController@qrcode', 'as'=>'qrcode'])
 Route::get('xqrcode', ['uses'=>'Home\CategoryController@xqrcode', 'as'=>'xqrcode']);
 
 //微信路由
-Route::group(['prefix' => 'admin','middleware' => 'wechat'], function () {
-    Route::get('server',['uses'=>'Wechat/ServerController@index','as'=>'wechat.server.index']);
+Route::group(['prefix' => 'wechat'], function () {
+    Route::get('token',['uses'=>'Wechat\ServerController@token','as'=>'wechat.server.token']);
+    Route::get('index',['uses'=>'Wechat\ServerController@index','as'=>'wechat.server.index']);
 });
 
 /*
