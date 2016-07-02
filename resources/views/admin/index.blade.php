@@ -64,6 +64,12 @@
                 <li><a href="{{URL::route('admin.role.index')}}" target="mainframe">角色管理</a></li>
             </ul>
         </li>
+        <li class="menu-list">
+            <a href="javascript:void(0);"><i class="fa fa-users"></i><span>公众号管理</span><b class="fa fa-angle-down"></b></a>
+            <ul class="sub-menu-list">
+                <li><a href="{{URL::route('wechat.index')}}" target="_self">公众号管理平台</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <div class="main-container">

@@ -22,7 +22,7 @@ class WechatAuthenticate
     {
         if (!session('wechat.oauth_user')) {
             if ($request->has('state') && $request->has('code')) {
-                session(['wechat.oauth_user' => Wechat::Oauth()->user()]);
+                session(['wechat.oauth_user' => Wechat::oauth()->user()]);
 
                 return redirect()->to($this->getTargetUrl($request));
             }
@@ -33,7 +33,7 @@ class WechatAuthenticate
                 $scopes = array_map('trim', explode(',', $scopes));
             }
 
-            return Wechat::Oauth()->scopes($scopes)->redirect($request->fullUrl());
+            return Wechat::oauth()->scopes($scopes)->redirect($request->fullUrl());
         }
 
         return $next($request);
