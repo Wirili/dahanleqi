@@ -18,6 +18,7 @@ class ServerController extends Controller
         dd(session('wechat.oauth_user'));
     }
     public function token(Request $request){
+        \Log::debug('token',$request->all());
         $signature = $request->signature;
         $timestamp = $request->timestamp;
         $nonce = $request->nonce;
@@ -31,7 +32,7 @@ class ServerController extends Controller
         if( $tmpStr == $signature ){
             return $request->echostr;
         }else{
-            return false;
+            return 'false';
         }
     }
 }
