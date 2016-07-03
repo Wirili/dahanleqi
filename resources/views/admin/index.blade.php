@@ -65,7 +65,7 @@
             </ul>
         </li>
         <li class="menu-list">
-            <a href="javascript:void(0);"><i class="fa fa-users"></i><span>公众号管理</span><b class="fa fa-angle-down"></b></a>
+            <a href="javascript:void(0);"><i class="fa fa-wechat"></i><span>公众号管理</span><b class="fa fa-angle-down"></b></a>
             <ul class="sub-menu-list">
                 <li><a href="{{URL::route('wechat.index')}}" target="_self">公众号管理平台</a></li>
             </ul>
