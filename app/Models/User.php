@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function socialites(){
-        return $this->hasMany('App/Models/Socialite','user_id','user_id');
+        return $this->hasMany('App\Models\Socialite','user_id','user_id');
     }
 }

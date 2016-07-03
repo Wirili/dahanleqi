@@ -34,20 +34,19 @@ class WechatAuthenticate
                     $user=new User();
                     $user->name='SJ'.date('YmdHis').rand(10000,99999);
                     $user->email=$user->name.'@sj.com';
-                    $user->password=rand(10000,99999);
+                    $user->password=\Hash::make(rand(10000,99999));
                     $user->save();
                     $socialite=new Socialite();
                     $socialite->user_id = $user->user_id;
-                    $socialite->openid = $original->openid;
-                    $socialite->nickname = $original->nickname;
-                    $socialite->sex = $original->sex;
-                    $socialite->province = $original->province;
-                    $socialite->city = $original->city;
-                    $socialite->country = $original->country;
-                    $socialite->headimgurl = $original->headimgurl;
-                    $socialite->privilege = $original->privilege;
+                    $socialite->openid = $original['openid'];
+                    $socialite->nickname = $original['nickname'];
+                    $socialite->sex = $original['sex'];
+                    $socialite->province = $original['province'];
+                    $socialite->city = $original['city'];
+                    $socialite->country = $original['country'];
+                    $socialite->headimgurl = $original['headimgurl'];
                     $socialite->save();
-                    Auth::login($user->user());
+                    Auth::login($user);
                 }
                 return redirect()->to($this->getTargetUrl($request));
             }
