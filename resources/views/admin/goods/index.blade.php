@@ -38,7 +38,7 @@
                 stateSave: true,
                 ajax: {
                     type:'POST',
-                    url: "{{URL::action('Admin\GoodsController@ajax',['_token'=>csrf_token()])}}"
+                    url: "{{URL::route('admin.goods.ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
                     {data: 'goods_id',className:'text-center'},

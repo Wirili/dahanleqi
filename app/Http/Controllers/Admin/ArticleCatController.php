@@ -97,7 +97,7 @@ class ArticleCatController extends Controller
         $cat->keywords = $request->keywords;
         $cat->cat_desc = $request->cat_desc;
         $cat->save();
-        return $this->sysMsg(trans('article.cat.save_success'),\URL::action('Admin\ArticleCatController@index'));
+        return $this->sysMsg(trans('article.cat.save_success'),\URL::route('admin.article_cat.index'));
     }
 
 
@@ -109,9 +109,9 @@ class ArticleCatController extends Controller
         $cat = ArticleCat::find($id);
         if($cat&&$cat->articles->isEmpty()&&$cat->children->isEmpty()) {
             $cat->delete();
-            return $this->sysMsg(trans('article.cat.del_success'), \URL::action('Admin\ArticleCatController@index'));
+            return $this->sysMsg(trans('article.cat.del_success'), \URL::route('admin.article_cat.index'));
         }else
-            return $this->sysMsg(trans('article.cat.del_fail'), \URL::action('Admin\ArticleCatController@index'),'error');
+            return $this->sysMsg(trans('article.cat.del_fail'), \URL::route('admin.article_cat.index'),'error');
 
     }
 

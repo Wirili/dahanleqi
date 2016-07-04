@@ -33,7 +33,7 @@
                 stateSave: true,
                 ajax: {
                     type:'POST',
-                    url: "{{URL::action('Admin\BrandController@ajax',['_token'=>csrf_token()])}}"
+                    url: "{{URL::route('admin.brand.ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
                     {data: 'brand_id',className:'text-center'},

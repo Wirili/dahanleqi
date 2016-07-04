@@ -82,9 +82,9 @@ class GoodsController extends Controller
                 }
             }
             $goods->delete();
-            return $this->sysMsg(trans('goods.del_success'),\URL::action('Admin\GoodsController@index'));
+            return $this->sysMsg(trans('goods.del_success'),\URL::route('admin.goods.index'));
         }else
-            return $this->sysMsg(trans('goods.del_fail'),\URL::action('Admin\GoodsController@index'),'error');
+            return $this->sysMsg(trans('goods.del_fail'),\URL::route('admin.goods.index'),'error');
     }
 
     public function save(Request $request)

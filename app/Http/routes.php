@@ -43,12 +43,17 @@ Route::group(['prefix' => 'admin/wechat'], function () {
     Route::get('token',['uses'=>'Admin\Wechat\ServerController@token','as'=>'admin.wechat.server.token']);
     Route::get('server',['uses'=>'Admin\Wechat\ServerController@index','as'=>'admin.wechat.server.index']);
 
+    //自定义菜单路由
     Route::get('menu/index',['uses'=>'Admin\Wechat\MenuController@index','as'=>'admin.wechat.menu.index']);
     Route::get('menu/create',['uses'=>'Admin\Wechat\MenuController@create','as'=>'admin.wechat.menu.create']);
     Route::get('menu/edit/{id}', ['uses'=>'Admin\Wechat\MenuController@edit','as'=>'admin.wechat.menu.edit']);
     Route::post('menu/save', ['uses'=>'Admin\Wechat\MenuController@save','as'=>'admin.wechat.menu.save']);
     Route::post('menu/ajax',['uses'=>'Admin\Wechat\MenuController@ajax','as'=>'admin.wechat.menu.ajax']);
     Route::get('menu/upload',['uses'=>'Admin\Wechat\MenuController@upload','as'=>'admin.wechat.menu.upload']);
+
+    //用户管理路由
+    Route::get('user/index',['uses'=>'Admin\Wechat\UserController@index','as'=>'admin.wechat.user.index']);
+    Route::post('user/ajax',['uses'=>'Admin\Wechat\UserController@ajax','as'=>'admin.wechat.user.ajax']);
 });
 
 /*

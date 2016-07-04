@@ -4,7 +4,7 @@
     <div class="login-wrap">
         <div class="login-logo">后台管理系统</div>
         <div class="login-form">
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/login') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('admin.login') }}">
                 {!! csrf_field() !!}
                 <div class="col">
                     <input class="login-input" id="email" type="email" name="email" placeholder="管理员账号" title="管理员账号" value="{{ old('email') }}">
@@ -18,7 +18,7 @@
                     <label class="login-checkbox">
                         <input type="checkbox" name="remember"> 下次自动登录
                     </label>
-                    <a href="{{ url('admin/password/reset') }}">忘记密码</a>
+                    <a href="{{ URL::route('admin.password.reset') }}">忘记密码</a>
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary btn-block">登 陆</button>

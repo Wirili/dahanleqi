@@ -91,7 +91,7 @@ class AdminController extends Controller
             $admin->detachRoles();
             $admin->attachRoles($data);
         }
-        return $this->sysMsg('管理员保存成功',\URL::action('Admin\AdminController@index'));
+        return $this->sysMsg('管理员保存成功',\URL::route('admin.admin.index'));
     }
 
     public function ajax(Request $request)

@@ -3,15 +3,15 @@
 @section('content')
     <ol class="breadcrumb">
         <li><a href="#">@lang('sys.home')</a></li>
-        <li class="active">@lang('article.list')</li>
+        <li class="active">@lang('wechat_menu.list')</li>
     </ol>
     <table id="dt" class="table table-bordered table-striped table-hover">
         <thead>
         <tr align="center">
             <th class="text-center" width="60">@lang('sys.id')</th>
-            <th class="text-center">@lang('article.title')</th>
-            <th class="text-center">@lang('article.cat_id')</th>
-            <th class="text-center" width="60">@lang('article.is_open')</th>
+            <th class="text-center">@lang('wechat_menu.name')</th>
+            <th class="text-center">@lang('wechat_menu.type')</th>
+            <th class="text-center" width="60">@lang('wechat_menu.is_show')</th>
             <th class="text-center" width="100">@lang('sys.create_time')</th>
             <th class="text-center" width="100">@lang('sys.handle')</th>
         </tr>
@@ -34,17 +34,14 @@
                 stateSave: true,
                 ajax: {
                     type:'POST',
-                    url: "{{URL::route('admin.article.ajax',['_token'=>csrf_token()])}}"
+                    url: "{{URL::route('admin.wechat.menu.ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
-                    {data: 'article_id',className:'text-center'},
-                    {data: 'title'},
+                    {data: 'menus_id',className:'text-center'},
+                    {data: 'name'},
+                    { data: 'type'},
                     {
-                        data: 'article_cat.cat_name',
-                        orderable: false
-                    },
-                    {
-                        data: 'is_open',
+                        data: 'is_show',
                         className: 'text-center',
                         render:function(data,type,row){
                             if(data==1){
@@ -57,19 +54,19 @@
                     },
                     {data: 'created_at'},
                     {
-                        data: 'article_id',
+                        data: 'menus_id',
                         className: 'text-center',
                         orderable: false,
                         render: function (data, type, row) {
-                            data = "<a href='/admin/article/edit/" + data + "' data-toggle='tooltip' data-placement='bottom' title='{{ trans('sys.edit') }}'><i class='fa fa-edit'></i></a>"
-                                    + "<a href='/admin/article/del/" + data + "' class='text-danger' data-toggle='tooltip' data-placement='bottom' title='{{ trans('sys.del') }}'><i class='fa fa-remove'></i></a>";
+                            data = "<a href='/admin/wechat/menu/edit/" + data + "' data-toggle='tooltip' data-placement='bottom' title='{{ trans('sys.edit') }}'><i class='fa fa-edit'></i></a>"
+                                    + "<a href='/admin/wechat/menu/del/" + data + "' class='text-danger' data-toggle='tooltip' data-placement='bottom' title='{{ trans('sys.del') }}'><i class='fa fa-remove'></i></a>";
                             return data;
                         }
                     }
                 ],
                 order: [[0, "desc"]]
             });
-            $('#btn').append("<a class='btn btn-primary' href='{{URL::route('admin.article.create')}}'>@lang('article.add')</a>");
+            $('#btn').append("<a class='btn btn-primary' href='{{URL::route('admin.wechat.menu.upload')}}'>@lang('wechat_menu.upload')</a> <a class='btn btn-primary' href='{{URL::route('admin.wechat.menu.create')}}'>@lang('wechat_menu.add')</a>");
         });
     </script>
 @endsection

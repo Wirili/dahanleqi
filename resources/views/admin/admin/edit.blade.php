@@ -3,13 +3,13 @@
 @section('content')
 <ol class="breadcrumb">
     <li><a href="">@lang('sys.home')</a></li>
-    <li><a href="{{url('admin/admin/index')}}">@lang('admin.list')</a></li>
+    <li><a href="{{URL::route('admin.admin.index')}}">@lang('admin.list')</a></li>
     <li class="active">@lang('admin.edit')</li>
 </ol>
 <div class="panel panel-default">
     <div class="panel-body">
         <div style="padding: 5px;">
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/admin/save') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('admin.admin.save') }}">
                 {!! csrf_field() !!}
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">

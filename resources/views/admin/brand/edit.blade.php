@@ -3,13 +3,13 @@
 @section('content')
 <ol class="breadcrumb">
     <li><a href="">{{trans('sys.home')}}</a></li>
-    <li><a href="{{url('admin/brand/index')}}">{{trans('brand.list')}}</a></li>
+    <li><a href="{{URL::route('admin.brand.index')}}">{{trans('brand.list')}}</a></li>
     <li class="active">{{trans('brand.edit')}}</li>
 </ol>
 <div class="panel panel-default">
     <div class="panel-body">
         <div style="padding: 5px;">
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/brand/save') }}" enctype="multipart/form-data">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('admin.brand.save') }}" enctype="multipart/form-data">
                 {!! csrf_field() !!}
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
