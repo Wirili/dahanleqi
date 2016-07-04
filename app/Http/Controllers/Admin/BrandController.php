@@ -58,9 +58,9 @@ class BrandController extends Controller
         $brand = Brand::find($id);
         if($brand&&$brand->goods->isEmpty()) {
             $brand->delete();
-            return $this->sysMsg(trans('brand.del_success'), \URL::action('Admin\BrandController@index'));
+            return $this->sysMsg(trans('brand.del_success'), \URL::route('admin.brand.index'));
         }else
-            return $this->sysMsg(trans('brand.del_fail'), \URL::action('Admin\BrandController@index'),'error');
+            return $this->sysMsg(trans('brand.del_fail'), \URL::route('admin.brand.index'),'error');
     }
 
     public function save(Request $request)
@@ -95,7 +95,7 @@ class BrandController extends Controller
             $brand->brand_logo = $filename;
             $brand->update();
         }
-        return $this->sysMsg(trans('brand.save_success'),\URL::action('Admin\BrandController@index'));
+        return $this->sysMsg(trans('brand.save_success'),\URL::route('admin.brand.index'));
     }
 
     public function ajax(Request $request)

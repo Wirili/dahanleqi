@@ -112,7 +112,7 @@ class CategoryController extends Controller
             $cat->show_img = $filename;
             $cat->update();
         }
-        return $this->sysMsg(trans('category.save_success'),\URL::action('Admin\CategoryController@index'));
+        return $this->sysMsg(trans('category.save_success'),\URL::route('admin.category.index'));
     }
 
 
@@ -127,9 +127,9 @@ class CategoryController extends Controller
                 Storage::disk('images')->delete($cat->show_img);
             }
             $cat->delete();
-            return $this->sysMsg(trans('category.del_success'), \URL::action('Admin\CategoryController@index'));
+            return $this->sysMsg(trans('category.del_success'), \URL::route('admin.category.index'));
         }else
-            return $this->sysMsg(trans('category.del_fail'), \URL::action('Admin\CategoryController@index'),'error');
+            return $this->sysMsg(trans('category.del_fail'), \URL::route('admin.category.index'),'error');
 
     }
 

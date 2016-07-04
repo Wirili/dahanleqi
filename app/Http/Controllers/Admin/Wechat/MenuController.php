@@ -63,9 +63,9 @@ class MenuController extends Controller
         $menu = WechatMenu::find($id);
         if($menu) {
             $menu->delete();
-            return $this->sysMsg(trans('wechat_menu.del_success'),\URL::action('Admin\Wechat\MenuController@index'));
+            return $this->sysMsg(trans('wechat_menu.del_success'),\URL::route('admin.wechat.menu.index'));
         }else
-            return $this->sysMsg(trans('wechat_menu.del_fail'),\URL::action('Admin\Wechat\MenuController@index'),'error');
+            return $this->sysMsg(trans('wechat_menu.del_fail'),\URL::route('admin.wechat.menu.index'),'error');
     }
 
     public function save(Request $request)
@@ -90,7 +90,7 @@ class MenuController extends Controller
         $menu->url = $request->url;
         $menu->sort_order = $request->sort_order;
         $menu->save();
-        return $this->sysMsg(trans('wechat_menu.save_success'),\URL::action('Admin\Wechat\MenuController@index'));
+        return $this->sysMsg(trans('wechat_menu.save_success'),\URL::route('admin.wechat.menu.index'));
     }
 
     public function ajax(Request $request)
@@ -144,7 +144,7 @@ class MenuController extends Controller
         }else{
             \Wechat::menu()->destroy();
         }
-        return $this->sysMsg('上传成功',\URL::action('Admin\Wechat\MenuController@index'));
+        return $this->sysMsg('上传成功',\URL::route('admin.wechat.menu.index'));
 
     }
 

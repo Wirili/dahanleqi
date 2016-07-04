@@ -69,9 +69,9 @@ class ArticleController extends Controller
         $article = Article::find($id);
         if($article) {
             $article->delete();
-            return $this->sysMsg(trans('article.del_success'),\URL::action('Admin\ArticleController@index'));
+            return $this->sysMsg(trans('article.del_success'),\URL::route('admin.article.index'));
         }else
-            return $this->sysMsg(trans('article.del_fail'),\URL::action('Admin\ArticleController@index'),'error');
+            return $this->sysMsg(trans('article.del_fail'),\URL::route('admin.article.index'),'error');
     }
 
     public function save(Request $request)
@@ -99,7 +99,7 @@ class ArticleController extends Controller
         $artcile->link = $request->link;
         $artcile->description = $request->description;
         $artcile->save();
-        return $this->sysMsg(trans('article.save_success'),\URL::action('Admin\ArticleController@index'));
+        return $this->sysMsg(trans('article.save_success'),\URL::route('admin.article.index'));
     }
 
     public function ajax(Request $request)

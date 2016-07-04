@@ -68,9 +68,9 @@ class RoleController extends Controller
         $role = Role::find($id);
         if($role&&$role->users->isEmpty()) {
                 $role->delete();
-                return $this->sysMsg(trans('role.del_success'),\URL::action('Admin\RoleController@index'));
+                return $this->sysMsg(trans('role.del_success'),\URL::route('admin.role.index'));
         }else
-            return $this->sysMsg(trans('role.del_fail'),\URL::action('Admin\RoleController@index'),'error');
+            return $this->sysMsg(trans('role.del_fail'),\URL::route('admin.role.index'),'error');
     }
 
     public function save(Request $request)
@@ -94,7 +94,7 @@ class RoleController extends Controller
             $data=$request->data;
             $role->savePermissions($data);
         }
-        return $this->sysMsg(trans('role.save_success'),\URL::action('Admin\RoleController@index'));
+        return $this->sysMsg(trans('role.save_success'),\URL::route('admin.role.index'));
     }
 
     public function ajax(Request $request)
