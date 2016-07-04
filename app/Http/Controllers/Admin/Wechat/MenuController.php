@@ -14,10 +14,14 @@ class MenuController extends Controller
     //
     protected $rules = [
         'name' => 'required',
+        'key'  =>'required_if:type,click',
+        'url'  =>'required_if:type,view',
     ];
 
     protected $messages = [
         'name.required' => '请输入菜单标题',
+        'key.required_if'=>'类型为click时，key必须填写',
+        'url.required_if'=>'类型为view时，网页链接必须填写',
     ];
 
     public function __construct()

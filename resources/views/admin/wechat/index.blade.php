@@ -25,7 +25,7 @@
         <li class="menu-list">
             <a href="javascript:void(0);"><i class="fa fa-wpforms"></i><span>管理</span><b class="fa fa-angle-down"></b></a>
             <ul class="sub-menu-list">
-                <li><a href="{{URL::route('admin.article.index')}}" target="mainframe">用户管理</a></li>
+                <li><a href="{{URL::route('admin.wechat.user.index')}}" target="mainframe">用户管理</a></li>
                 <li><a href="{{URL::route('admin.article_cat.index')}}" target="mainframe">素材管理</a></li>
                 <li><a href="{{URL::route('admin.article_cat.index')}}" target="mainframe">渠道二维码</a></li>
             </ul>
