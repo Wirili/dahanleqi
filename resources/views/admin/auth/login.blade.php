@@ -18,7 +18,7 @@
                     <label class="login-checkbox">
                         <input type="checkbox" name="remember"> 下次自动登录
                     </label>
-                    <a href="{{ URL::route('admin.password.reset') }}">忘记密码</a>
+                    <a href="{{ url('admin/password/reset') }}">忘记密码</a>
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary btn-block">登 陆</button>
