@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Wechat;
+namespace App\Http\Controllers\Admin\Wechat;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class ServerController extends Controller
     //
     public function __construct()
     {
-        // $this->middleware('wechat');
+        $this->middleware('wechat');
     }
 
     public function index()

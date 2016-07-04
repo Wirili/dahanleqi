@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Wechat;
+namespace App\Http\Controllers\Admin\Wechat;
 
 use Illuminate\Http\Request;
 
@@ -16,6 +16,6 @@ class IndexController extends Controller
     
     public function index()
     {
-        return view('wechat.index');
+        return view('admin.wechat.index');
     }
 }

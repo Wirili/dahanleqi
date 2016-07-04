@@ -38,10 +38,17 @@ Route::get('qrcode', ['uses'=>'Home\CategoryController@qrcode', 'as'=>'qrcode'])
 Route::get('xqrcode', ['uses'=>'Home\CategoryController@xqrcode', 'as'=>'xqrcode']);
 
 //微信路由
-Route::group(['prefix' => 'wechat'], function () {
-    Route::get('index',['uses'=>'Wechat\IndexController@index','as'=>'wechat.index']);
-    Route::get('token',['uses'=>'Wechat\ServerController@token','as'=>'wechat.server.token']);
-    Route::get('server',['uses'=>'Wechat\ServerController@index','as'=>'wechat.server.index']);
+Route::group(['prefix' => 'admin/wechat'], function () {
+    Route::get('index',['uses'=>'Admin\Wechat\IndexController@index','as'=>'admin.wechat.index']);
+    Route::get('token',['uses'=>'Admin\Wechat\ServerController@token','as'=>'admin.wechat.server.token']);
+    Route::get('server',['uses'=>'Admin\Wechat\ServerController@index','as'=>'admin.wechat.server.index']);
+
+    Route::get('menu/index',['uses'=>'Admin\Wechat\MenuController@index','as'=>'admin.wechat.menu.index']);
+    Route::get('menu/create',['uses'=>'Admin\Wechat\MenuController@create','as'=>'admin.wechat.menu.create']);
+    Route::get('menu/edit/{id}', ['uses'=>'Admin\Wechat\MenuController@edit','as'=>'admin.wechat.menu.edit']);
+    Route::post('menu/save', ['uses'=>'Admin\Wechat\MenuController@save','as'=>'admin.wechat.menu.save']);
+    Route::post('menu/ajax',['uses'=>'Admin\Wechat\MenuController@ajax','as'=>'admin.wechat.menu.ajax']);
+    Route::get('menu/upload',['uses'=>'Admin\Wechat\MenuController@upload','as'=>'admin.wechat.menu.upload']);
 });
 
 /*

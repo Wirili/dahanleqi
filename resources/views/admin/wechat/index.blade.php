@@ -1,4 +1,4 @@
-@extends('wechat.layouts.layouts')
+@extends('admin.layouts.index')
 
 @section('content')
 <style>
@@ -19,7 +19,7 @@
             <ul class="sub-menu-list">
                 <li><a href="{{URL::route('admin.goods.index')}}" target="mainframe">群发消息</a></li>
                 <li><a href="{{URL::route('admin.category.index')}}" target="mainframe">自动回复</a></li>
-                <li><a href="{{URL::route('admin.brand.index')}}" target="mainframe">自定义菜单</a></li>
+                <li><a href="{{URL::route('admin.wechat.menu.index')}}" target="mainframe">自定义菜单</a></li>
             </ul>
         </li>
         <li class="menu-list">
