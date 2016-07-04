@@ -25,18 +25,20 @@ class WechatAuthenticate
     {
         if (!Auth::guard($guard)->check()) {
             if ($request->has('state') && $request->has('code')) {
-                $wechat_user=Wechat::oauth()->user();
-                $user=Socialite::find($wechat_user->getId());
-                if($user){
-                    Auth::login($user->user());
-                }else{
-                    $original=$wechat_user->getOriginal();
-                    $user=new User();
-                    $user->name='SJ'.date('YmdHis').rand(10000,99999);
-                    $user->email=$user->name.'@sj.com';
-                    $user->password=\Hash::make(rand(10000,99999));
+                $wechat_user = Wechat::oauth()->user();
+                $user = Socialite::where('openid',$wechat_user->getId())->first();
+                if (!$user && $wechat_user->getToken()->scope == 'snsapi_base') {
+                    return Wechat::oauth()->scopes(['snsapi_userinfo'])->redirect($request->fullUrl());
+                } elseif ($user) {
+                    Auth::login($user->user);
+                } else {
+                    $original = $wechat_user->getOriginal();
+                    $user = new User();
+                    $user->name = $original['nickname'];
+                    $user->email = 'SJ' . date('YmdHis') . rand(10000, 99999) . '@sj.com';
+                    $user->password = \Hash::make(rand(10000, 99999));
                     $user->save();
-                    $socialite=new Socialite();
+                    $socialite = new Socialite();
                     $socialite->user_id = $user->user_id;
                     $socialite->openid = $original['openid'];
                     $socialite->nickname = $original['nickname'];
