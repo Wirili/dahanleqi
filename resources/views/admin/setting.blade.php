@@ -8,7 +8,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div style="padding: 5px;">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/brand/save') }}" enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('admin.brand.save') }}" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">

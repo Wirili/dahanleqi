@@ -34,7 +34,7 @@
                 stateSave: true,
                 ajax: {
                     type:'POST',
-                    url: "{{URL::action('Admin\Wechat\MenuController@ajax',['_token'=>csrf_token()])}}"
+                    url: "{{URL::route('admin.wechat.menu.ajax',['_token'=>csrf_token()])}}"
                 },
                 columns: [
                     {data: 'menus_id',className:'text-center'},

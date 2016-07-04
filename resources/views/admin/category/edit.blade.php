@@ -3,13 +3,13 @@
 @section('content')
 <ol class="breadcrumb">
     <li><a href="">@lang('sys.home')</a></li>
-    <li><a href="{{url('admin/category/index')}}">@lang('category.list')</a></li>
+    <li><a href="{{URL::route('admin.category.index')}}">@lang('category.list')</a></li>
     <li class="active">@lang('category.edit')</li>
 </ol>
 <div class="panel panel-default">
     <div class="panel-body">
         <div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/category/save') }}"  enctype="multipart/form-data">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('admin.category.save') }}"  enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="cat_name">@lang('category.cat_name')</label>

@@ -6,7 +6,7 @@
         <li class="active">@lang('article.cat.list')</li>
     </ol>
     <div class="pull-right mb5">
-        <a class="btn btn-primary" href="{{url('admin/article_cat/create')}}">@lang('article.cat.add')</a>
+        <a class="btn btn-primary" href="{{URL::route('admin.article_cat.create')}}">@lang('article.cat.add')</a>
     </div>
     <table id="dt" class="table table-bordered table-striped table-hover">
         <thead>
@@ -24,8 +24,8 @@
         <td>{{$item['cat_desc']}}</td>
         <td>{{$item['sort_order']}}</td>
         <td>
-        <a data-toggle="tooltip" data-placement="bottom" title="@lang('sys.edit')" href="{{url('admin/article_cat/edit',['id'=>$item['cat_id']])}}"><i class="fa fa-edit"></i></a>
-        <a class="text-danger" data-toggle="tooltip" data-placement="bottom" title="@lang('sys.del')" href="{{url('admin/article_cat/del',['id'=>$item['cat_id']])}}"><i class="fa fa-remove"></i></a>
+        <a data-toggle="tooltip" data-placement="bottom" title="@lang('sys.edit')" href="{{URL::route('admin.article_cat.edit',['id'=>$item['cat_id']])}}"><i class="fa fa-edit"></i></a>
+        <a class="text-danger" data-toggle="tooltip" data-placement="bottom" title="@lang('sys.del')" href="{{URL::route('admin.article_cat.del',['id'=>$item['cat_id']])}}"><i class="fa fa-remove"></i></a>
         </td>
         </tr>
         @endforeach
