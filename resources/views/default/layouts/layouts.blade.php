@@ -24,6 +24,7 @@
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @yield('header')
 </head>
 <body style="padding-top: 50px;">
     <nav class="navbar navbar-default navbar-fixed-top">
