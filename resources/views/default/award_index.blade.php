@@ -29,9 +29,6 @@
     <script>
         $(function () {
             $("#startbtn").click(function () {
-                $("#startbtn").rotate({
-                    animateTo:0
-                });
                 award();
             });
         });
