@@ -27,8 +27,8 @@ class UserController extends Controller
     {
         $filter = $request->only(['draw', 'columns', 'order', 'start', 'length']);
         $data = Socialite::orderBy($filter['columns'][$filter['order'][0]['column']]['data'], $filter['order'][0]['dir'])->forPage($filter['start'] / $filter['length'] + 1, $filter['length'])->get();
-        $recordsTotal = Socialite::all()->count();
-        $recordsFiltered = Socialite::all()->count();
+        $recordsTotal = Socialite::count();
+        $recordsFiltered = Socialite::count();
         return [
             'draw' => intval($filter['draw']),
             'recordsTotal' => intval($recordsTotal),

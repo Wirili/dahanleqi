@@ -98,8 +98,8 @@ class AdminController extends Controller
     {
         $filter = $request->only(['draw', 'columns', 'order', 'start', 'length']);
         $data = Admin::orderBy($filter['columns'][$filter['order'][0]['column']]['data'], $filter['order'][0]['dir'])->forPage($filter['start'] / $filter['length'] + 1, $filter['length'])->get();
-        $recordsTotal = Admin::all()->count();
-        $recordsFiltered = Admin::all()->count();
+        $recordsTotal = Admin::count();
+        $recordsFiltered = Admin::count();
         return [
             'draw' => intval($filter['draw']),
             'recordsTotal' => intval($recordsTotal),

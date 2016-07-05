@@ -106,8 +106,8 @@ class ArticleController extends Controller
     {
         $filter = $request->only(['draw', 'columns', 'order', 'start', 'length']);
         $data = Article::with('article_cat')->orderBy($filter['columns'][$filter['order'][0]['column']]['data'], $filter['order'][0]['dir'])->forPage($filter['start'] / $filter['length'] + 1, $filter['length'])->get();
-        $recordsTotal = Article::all()->count();
-        $recordsFiltered = Article::all()->count();
+        $recordsTotal = Article::count();
+        $recordsFiltered = Article::count();
         return [
             'draw' => intval($filter['draw']),
             'recordsTotal' => intval($recordsTotal),

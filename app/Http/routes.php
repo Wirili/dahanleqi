@@ -37,6 +37,10 @@ Route::get('category/{id}', ['uses'=>'Home\CategoryController@index', 'as'=>'cat
 Route::get('qrcode', ['uses'=>'Home\CategoryController@qrcode', 'as'=>'qrcode']);
 Route::get('xqrcode', ['uses'=>'Home\CategoryController@xqrcode', 'as'=>'xqrcode']);
 
+//抽奖路由
+Route::get('award/index',['uses'=>'Home\AwardController@index','as'=>'award.index']);
+Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax']);
+
 //微信路由
 Route::group(['prefix' => 'admin/wechat'], function () {
     Route::get('index',['uses'=>'Admin\Wechat\IndexController@index','as'=>'admin.wechat.index']);
