@@ -160,6 +160,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -208,6 +209,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Wechat' => Overtrue\LaravelWechat\Facade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

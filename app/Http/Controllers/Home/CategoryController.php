@@ -17,6 +17,7 @@ class CategoryController extends Controller
 
     public function index($id)
     {
+        dd(phpinfo());
         $cat=Category::find($id);
         if($cat){
             $goods=$cat->goods()->orderBy('goods_id','desc')->paginate(12);
