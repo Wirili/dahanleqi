@@ -101,8 +101,8 @@ class MenuController extends Controller
     {
         $filter = $request->only(['draw', 'columns', 'order', 'start', 'length']);
         $data = WechatMenu::orderBy($filter['columns'][$filter['order'][0]['column']]['data'], $filter['order'][0]['dir'])->forPage($filter['start'] / $filter['length'] + 1, $filter['length'])->get();
-        $recordsTotal = WechatMenu::all()->count();
-        $recordsFiltered = WechatMenu::all()->count();
+        $recordsTotal = WechatMenu::count();
+        $recordsFiltered = WechatMenu::count();
         return [
             'draw' => intval($filter['draw']),
             'recordsTotal' => intval($recordsTotal),
