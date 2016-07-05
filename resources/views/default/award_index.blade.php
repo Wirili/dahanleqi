@@ -52,7 +52,11 @@
                         animateTo: 1800 + a, //转动角度
                         easing: $.easing.easeOutSine,
                         callback: function () {
-                            alert('恭喜你，中得' + p);
+                            layer.open({
+                                content: '恭喜你，中得' + p,
+                                time: 2 //2秒后自动关闭
+                            });
+                            //alert('恭喜你，中得' + p);
                             /*var con = confirm('恭喜你，中得'+p);
                              if(con){
                              award();
