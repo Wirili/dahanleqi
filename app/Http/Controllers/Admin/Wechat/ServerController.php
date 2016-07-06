@@ -50,7 +50,18 @@ class ServerController extends Controller
     
     protected function server(Request $request)
     {
-        \Log::debug('server', $request->all());
-        dd([\Auth::user(),\Auth::user()->socialites]);
+        $server=\Wechat::server();
+        $server->setMessageHandler(function($message){
+            \Log::debug('message', $message->all());
+            switch($message->MsgType){
+                case 'event':
+                    return 'event';
+                    break;
+                case 'text':
+                    return '你好！欢迎关注我';
+                    break;
+            }
+        });
+        return $server->serve();
     }
 }
