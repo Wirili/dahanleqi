@@ -43,4 +43,9 @@ class ServerController extends Controller
             return 'false';
         }
     }
+
+    public function server(Request $request)
+    {
+        \Log::debug('server', $request->all());
+    }
 }

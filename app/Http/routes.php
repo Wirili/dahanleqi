@@ -50,6 +50,7 @@ Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax'
 Route::group(['prefix' => 'admin/wechat'], function () {
     Route::get('index',['uses'=>'Admin\Wechat\IndexController@index','as'=>'admin.wechat.index']);
     Route::get('token',['uses'=>'Admin\Wechat\ServerController@token','as'=>'admin.wechat.server.token']);
+    Route::post('token',['uses'=>'Admin\Wechat\ServerController@server','as'=>'admin.wechat.server.server']);
     Route::get('server',['uses'=>'Admin\Wechat\ServerController@index','as'=>'admin.wechat.server.index']);
 
     //自定义菜单路由
