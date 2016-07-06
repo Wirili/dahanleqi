@@ -47,7 +47,7 @@ Route::get('award/index',['uses'=>'Home\AwardController@index','as'=>'award.inde
 Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax']);
 
 //微信路由
-Route::group(['prefix' => 'admin/wechat'], function () {
+Route::group(['prefix' => 'admin/wechat','middleware' => 'wechat_web'], function () {
     Route::get('index',['uses'=>'Admin\Wechat\IndexController@index','as'=>'admin.wechat.index']);
     Route::get('token',['uses'=>'Admin\Wechat\ServerController@token','as'=>'admin.wechat.server.token']);
     Route::post('token',['uses'=>'Admin\Wechat\ServerController@server','as'=>'admin.wechat.server.server']);
