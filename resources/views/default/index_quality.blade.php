@@ -21,10 +21,11 @@
 
 @section('content')
 
-    <form class="form-horizontal">
+    <form class="form-inline">
         <div class="form-group">
-            <div class="col-xs-10"><input class="form-control input-sm" id="goods_code" name="goods_code" type="text" onClick="sc();" readonly placeholder="产品编号"/></div>
-            <div class="col-xs-2"><a class="btn btn-default" onClick="sc();"><i class="fa fa-qrcode"></i></a></div>
+            <label for="goods_code">产品编号</label>
+            <input class="form-control" id="goods_code" name="goods_code" type="text" onClick="sc();" readonly placeholder="产品编号"/>
+            <a class="btn btn-default" onClick="sc();"><i class="fa fa-qrcode"></i></a>
         </div>
     </form>
 @endsection
