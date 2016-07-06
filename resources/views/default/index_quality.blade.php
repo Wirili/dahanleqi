@@ -20,9 +20,11 @@
 @endsection
 
 @section('content')
-    <div>
-        <span>产品编号：</span>
-        <div><input id="goods_code" name="goods_code" type="text" onClick="sc();" readonly /></div>
-        <p><img src="images/qr.jpg" style="width:25px;padding:8px 5px;" onClick="sc();" /></p>
-    </div>
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-10"><input class="form-control input-sm" id="goods_code" name="goods_code" type="text" onClick="sc();" readonly placeholder="产品编号"/></div>
+            <div class="col-xs-2"><a class="btn btn-default" onClick="sc();"><i class="fa fa-qrcode"></i></a></div>
+        </div>
+    </form>
 @endsection
