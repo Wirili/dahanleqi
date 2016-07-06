@@ -24,7 +24,7 @@ class ServerController extends Controller
         if($request->isMethod('GET'))
             return $this->token($request);
         else
-            return $this->server();
+            return $this->server($request);
         
     }
 
