@@ -3,7 +3,7 @@
 @section('header')
     <script src="{{asset('common/js/jweixin-1.0.0.js')}}"></script>
     <script>
-        wx.config({!! \Wechat::js()->config(array('onMenuShareQQ', 'onMenuShareWeibo'), true) !!});
+        wx.config({!! \Wechat::js()->config(array('hideOptionMenu'), true) !!});
         wx.ready(function(){
             wx.hideOptionMenu();
         });
