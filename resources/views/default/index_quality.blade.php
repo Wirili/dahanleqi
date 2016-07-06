@@ -20,12 +20,17 @@
 @endsection
 
 @section('content')
-
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="goods_code">产品编号</label>
-            <input class="form-control" id="goods_code" name="goods_code" type="text" onClick="sc();" readonly placeholder="产品编号"/>
-            <a class="btn btn-default" onClick="sc();"><i class="fa fa-qrcode"></i></a>
-        </div>
-    </form>
+    <div class="container">
+        <form class="form-horizontal" style="margin-top:15px;">
+            <div class="form-group">
+                <div class="col-md-12"><input class="form-control" id="goods_code" name="goods_code" type="text" onClick="sc();" readonly placeholder="产品编号-点击扫码"/></div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><input class="form-control" id="goods_password" name="goods_password" type="text" placeholder="刮涂码"/></div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 text-center"><button class="btn btn-default">正品查询</button></div>
+            </div>
+        </form>
+    </div>
 @endsection
