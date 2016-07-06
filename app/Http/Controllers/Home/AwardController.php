@@ -11,6 +11,12 @@ class AwardController extends Controller
     //
     public function __construct()
     {
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        if (strpos($user_agent, 'MicroMessenger') === false) {
+            $this->middleware('auth');
+        } else {
+            $this->middleware('wechat');
+        }
     }
     
     public function index()

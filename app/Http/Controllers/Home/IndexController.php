@@ -14,7 +14,13 @@ class IndexController extends Controller
 
     }
 
-    public function index(){
+    public function index()
+    {
         return view('default.index');
+    }
+
+    public function quality()
+    {
+        return view('default.index_quality');
     }
 }

@@ -37,6 +37,11 @@ Route::get('category/{id}', ['uses'=>'Home\CategoryController@index', 'as'=>'cat
 Route::get('qrcode', ['uses'=>'Home\CategoryController@qrcode', 'as'=>'qrcode']);
 Route::get('xqrcode', ['uses'=>'Home\CategoryController@xqrcode', 'as'=>'xqrcode']);
 
+/***************
+ * 正品查询路由
+ ***************/
+Route::get('index/quality',['uses'=>'Home\IndexController@quality','as'=>'index.quality']);
+
 //抽奖路由
 Route::get('award/index',['uses'=>'Home\AwardController@index','as'=>'award.index']);
 Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax']);
