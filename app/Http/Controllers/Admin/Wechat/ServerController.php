@@ -11,20 +11,24 @@ class ServerController extends Controller
     //
     public function __construct()
     {
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        if (strpos($user_agent, 'MicroMessenger') === false) {
-            $this->middleware('auth');
-        } else {
-            $this->middleware('wechat');
-        }
+//        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+//        if (strpos($user_agent, 'MicroMessenger') === false) {
+//            $this->middleware('auth');
+//        } else {
+//            $this->middleware('wechat');
+//        }
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        dd([\Auth::user(),\Auth::user()->socialites]);
+        if($request->isMethod('GET'))
+            return $this->token($request);
+        else
+            return $this->server();
+        
     }
 
-    public function token(Request $request)
+    protected function token(Request $request)
     {
         \Log::debug('token', $request->all());
         $signature = $request->signature;
@@ -43,9 +47,10 @@ class ServerController extends Controller
             return 'false';
         }
     }
-
-    public function server(Request $request)
+    
+    protected function server(Request $request)
     {
         \Log::debug('server', $request->all());
+        dd([\Auth::user(),\Auth::user()->socialites]);
     }
 }
