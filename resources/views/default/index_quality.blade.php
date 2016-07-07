@@ -17,7 +17,7 @@
                 success: function (res) {
                     if(res) {
                         var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-                        $("#goods_code").val(result.split("-")[1]+'\n'+$("#goods_code").val());
+                        $("#goods_code").val($("#goods_code").val()+'\n'+result.split("-")[1]);
                     }else
                         falt=false;
                     sc(falt);
