@@ -13,15 +13,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         //
-        $list=[[
-            'name'=>'admin',
-            'email'=>'admin@qq.com',
-            'password'=>\Hash::make('123456')
-        ],[
-            'name'=>'霖',
-            'email'=>'SJ1234567@qq.com',
-            'password'=>\Hash::make('123456')
-        ]];
+        $list=[];
         foreach ($list as $item) {
             User::create($item);
         }
