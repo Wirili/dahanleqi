@@ -11,6 +11,7 @@ class AwardController extends Controller
     //
     public function __construct()
     {
+        parent::__construct();
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($user_agent, 'MicroMessenger') === false) {
             $this->middleware('auth');

@@ -11,6 +11,11 @@ use Wechat, Log;
 class WechatController extends Controller
 {
     //
+    public function __construct()
+    {
+        
+    }
+
     public function index(Request $request)
     {
         if ($request->isMethod('GET'))

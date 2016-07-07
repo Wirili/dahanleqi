@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Admin\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Models\WebConfig;
 
 class IndexController extends Controller
 {
@@ -72,10 +73,20 @@ class IndexController extends Controller
     }
 
     public function getSetting(){
-        return view('admin.setting');
+        $config = WebConfig::where('parent_id',0)->get();
+        return view('admin.setting',['config'=>$config]);
     }
 
-    public function postSetting(){
-        return view('admin.setting');
+    public function postSetting(Request $request){
+
+        $configs=WebConfig::where('parent_id','<>','0')->get();
+        $data=$request->data;
+        foreach ($configs as $config) {
+            if($config->value!=$data[$config->id]){
+                $config->value=$data[$config->id];
+                $config->save();
+            }
+        }
+        return $this->sysMsg(trans('goods.save_success'),\URL::route('admin.welcome'));
     }
 }
