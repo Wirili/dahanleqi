@@ -63,7 +63,7 @@ class WechatController extends Controller
 
     protected function subscribe($message)
     {
-        $socialite=Socialite::where('openid',$message->FromUserName)->get();
+        $socialite=Socialite::where('openid',$message->FromUserName)->first();
         if($socialite){
             $socialite->subscribe=1;
             $socialite->save();
@@ -73,7 +73,7 @@ class WechatController extends Controller
 
     protected function unsubscribe($message)
     {
-        $socialite=Socialite::where('openid',$message->FromUserName)->get();
+        $socialite=Socialite::where('openid',$message->FromUserName)->first();
         if($socialite){
             $socialite->subscribe=0;
             $socialite->save();

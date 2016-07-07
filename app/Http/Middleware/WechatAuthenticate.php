@@ -33,6 +33,8 @@ class WechatAuthenticate
                     Auth::login($user->user);
                 } else {
                     $original = $wechat_user->getOriginal();
+                    $subscribe = Wechat::user()->get($original['openid']);
+                    Wechat::user();
                     $user = new User();
                     $user->name = $original['nickname'];
                     $user->email = 'SJ' . date('YmdHis') . rand(10000, 99999) . '@sj.com';
@@ -43,10 +45,14 @@ class WechatAuthenticate
                     $socialite->openid = $original['openid'];
                     $socialite->nickname = $original['nickname'];
                     $socialite->sex = $original['sex'];
+                    $socialite->language = $original['language'];
                     $socialite->province = $original['province'];
                     $socialite->city = $original['city'];
                     $socialite->country = $original['country'];
                     $socialite->headimgurl = $original['headimgurl'];
+                    $socialite->unionid = $original['unionid']??'';
+                    $socialite->subscribe = $subscribe->subscribe;
+                    $socialite->subscribe_time = $subscribe->subscribe_time??0;
                     $socialite->save();
                     Auth::login($user);
                 }
