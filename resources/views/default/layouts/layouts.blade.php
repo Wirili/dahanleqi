@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>大韩乐奇</title>
+    <title>{{$config['web_name']}}</title>
 
     <!-- Styles -->
     <link href="{{asset('common/css/bootstrap.min.css')}}" rel="stylesheet" type='text/css'>
@@ -60,7 +60,7 @@
     </nav>
 @yield('content')
 <footer class="text-center">
-    <p>粤ICP备15067622号-1 | 大韩乐奇 版权所有</p>
+    <p>{{$config['web_icp']}} | 大韩乐奇 版权所有</p>
 </footer>
 </body>
 </html>

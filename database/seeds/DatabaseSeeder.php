@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
          $this->call(GoodsImageTableSeeder::class);
          $this->call(RoleTableSeeder::class);
          $this->call(SocialitesTableSeeder::class);
+         $this->call(WechatMenuTableSeeder::class);
+         $this->call(WebConfigTableSeeder::class);
     }
 }
