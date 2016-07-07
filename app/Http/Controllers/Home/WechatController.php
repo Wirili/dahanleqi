@@ -51,7 +51,7 @@ class WechatController extends Controller
                         case 'subscribe':
                             return $this->subscribe($message);
                         case 'unsubscribe':
-                            return '取消关注优乐柔！';
+                            return $this->unsubscribe($message);
                     }
                     return 'event';
                 case 'text':
@@ -69,5 +69,15 @@ class WechatController extends Controller
             $socialite->save();
         }
         return '欢迎关注优乐柔！';
+    }
+
+    protected function unsubscribe($message)
+    {
+        $socialite=Socialite::where('openid',$message->FromUserName)->get();
+        if($socialite){
+            $socialite->subscribe=0;
+            $socialite->save();
+        }
+        return '取消关注优乐柔！';
     }
 }
