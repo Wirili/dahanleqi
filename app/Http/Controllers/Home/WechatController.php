@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\models\Socialite;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -46,13 +47,37 @@ class WechatController extends Controller
             Log::debug('message', $message->all());
             switch ($message->MsgType) {
                 case 'event':
+                    switch($message->Event){
+                        case 'subscribe':
+                            return $this->subscribe($message);
+                        case 'unsubscribe':
+                            return $this->unsubscribe($message);
+                    }
                     return 'event';
-                    break;
                 case 'text':
                     return '你好！欢迎关注我';
-                    break;
             }
         });
         return $server->serve();
+    }
+
+    protected function subscribe($message)
+    {
+        $socialite=Socialite::where('openid',$message->FromUserName)->get();
+        if($socialite){
+            $socialite->subscribe=1;
+            $socialite->save();
+        }
+        return '欢迎关注优乐柔！';
+    }
+
+    protected function unsubscribe($message)
+    {
+        $socialite=Socialite::where('openid',$message->FromUserName)->get();
+        if($socialite){
+            $socialite->subscribe=0;
+            $socialite->save();
+        }
+        return '取消关注优乐柔！';
     }
 }
