@@ -38,6 +38,11 @@ Route::get('qrcode', ['uses'=>'Home\CategoryController@qrcode', 'as'=>'qrcode'])
 Route::get('xqrcode', ['uses'=>'Home\CategoryController@xqrcode', 'as'=>'xqrcode']);
 
 /***************
+ * 微信接收路由
+ ***************/
+Route::match(['get','post'],'wechat/server',['uses'=>'Home\WechatController@index','as'=>'wechat.index']);
+
+/***************
  * 正品查询路由
  ***************/
 Route::get('index/quality',['uses'=>'Home\IndexController@quality','as'=>'index.quality']);
@@ -49,8 +54,6 @@ Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax'
 //微信路由
 Route::group(['prefix' => 'admin/wechat'], function () {
     Route::get('index',['uses'=>'Admin\Wechat\IndexController@index','as'=>'admin.wechat.index']);
-    Route::get('server',['uses'=>'Admin\Wechat\ServerController@index','as'=>'admin.wechat.server.token']);
-    Route::post('server',['uses'=>'Admin\Wechat\ServerController@index','as'=>'admin.wechat.server.index']);
 
     //自定义菜单路由
     Route::get('menu/index',['uses'=>'Admin\Wechat\MenuController@index','as'=>'admin.wechat.menu.index']);
