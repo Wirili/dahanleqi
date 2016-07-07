@@ -60,7 +60,7 @@
     </nav>
 @yield('content')
 <footer class="text-center">
-    <p>粤ICP备15067622号-1 | 大韩乐奇 版权所有</p>
+    <p>{{$config['web_icp']}} | 大韩乐奇 版权所有</p>
 </footer>
 </body>
 </html>

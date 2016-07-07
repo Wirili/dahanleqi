@@ -22,19 +22,23 @@ class WebConfigTableSeeder extends Seeder
         ],[
             'parent_id'=>1,
             'code'=>'web_name',
-            'type'=>'text'
+            'type'=>'text',
+            'value'=>'优乐柔'
         ],[
             'parent_id'=>1,
             'code'=>'web_title',
-            'type'=>'text'
+            'type'=>'text',
+            'value'=>'优乐柔'
         ],[
             'parent_id'=>1,
             'code'=>'web_desc',
-            'type'=>'text'
+            'type'=>'text',
+            'value'=>'优乐柔可湿巾'
         ],[
             'parent_id'=>1,
             'code'=>'web_keys',
-            'type'=>'text'
+            'type'=>'text',
+            'value'=>'优乐柔可湿巾'
         ],[
             'parent_id'=>1,
             'code'=>'web_address',
@@ -42,7 +46,8 @@ class WebConfigTableSeeder extends Seeder
         ],[
             'parent_id'=>1,
             'code'=>'web_icp',
-            'type'=>'text'
+            'type'=>'text',
+            'value'=>'粤ICP备15067622号-1'
         ]];
         foreach ($lists as $list) {
             WebConfig::create($list);
