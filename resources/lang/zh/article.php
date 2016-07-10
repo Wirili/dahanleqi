@@ -13,6 +13,7 @@ return [
     'title' => '文章标题',
     'cat_id' => '文章分类',
     'is_open' => '是否显示',
+    'show_in_nav' => '在导航栏显示',
     'author' => '文章作者',
     'author_email' => '作者email',
     'keywords' => '关键字',

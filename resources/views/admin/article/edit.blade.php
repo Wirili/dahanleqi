@@ -40,6 +40,10 @@
                         <div class="col-md-4"><input class="checkbox" type="checkbox" name="is_open" id="is_open" @if($article->is_open==1) checked @endif value="1"></div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-2 control-label" for="is_open">@lang('article.show_in_nav')</label>
+                        <div class="col-md-4"><input class="checkbox" type="checkbox" name="show_in_nav" id="show_in_nav" @if($article->show_in_nav==1) checked @endif value="1"></div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-2 control-label" for="author">@lang('article.author')</label>
                         <div class="col-md-4"><input type="text" class="form-control input-sm" name="author" id="author" value="{{$article->author}}"></div>
                     </div>

@@ -51,9 +51,9 @@
                     @foreach(\App\Models\Category::where('show_in_nav',1)->get() as $item)
                         <li @if(URL::current()==URL::route('category',['id'=>$item->cat_id])) class="active" @endif><a href="{{URL::route('category',['id'=>$item->cat_id])}}">{{$item->cat_name}}</a></li>
                     @endforeach
-                    <li><a href="#">加盟代理</a></li>
-                    <li><a href="#">联系我们</a></li>
-                    <li><a href="#">关于我们</a></li>
+                    @foreach(\App\Models\Article::where('show_in_nav',1)->orderBy('article_id','asc')->get() as $item)
+                        <li @if(URL::current()==URL::route('article',['id'=>$item->article_id])) class="active" @endif><a href="{{URL::route('article',['id'=>$item->article_id])}}">{{$item->title}}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
