@@ -33,7 +33,7 @@ class ArticleCatController extends Controller
         if(!$this->adminGate('article_cat_show')){
             return $this->sysMsg(trans('sys.no_permission'),'','error');
         }
-        $cat_list=$this->getCatList(0);
+        $cat_list=ArticleCat::getCatList(0);
         return view('admin.articlecat.index',['cat_list'=>$cat_list]);
     }
 
@@ -49,7 +49,7 @@ class ArticleCatController extends Controller
         }
         $cat = ArticleCat::find($id);
         //不允许选择上级类别为子类别
-        $children=array_merge(array_column($this->getCatList($id),'cat_id'),[$id]);
+        $children=array_merge(array_column(ArticleCat::getCatList($id),'cat_id'),[$id]);
         $article_cat = ArticleCat::whereNotIn('cat_id',$children)->get();
         return view('admin.articlecat.edit', ['cat' => $cat, 'article_cat' => $article_cat]);
     }
@@ -113,25 +113,5 @@ class ArticleCatController extends Controller
         }else
             return $this->sysMsg(trans('article.cat.del_fail'), \URL::route('admin.article_cat.index'),'error');
 
-    }
-
-    /**
-     * 递归获取文章分类
-     * @param int $parent_id
-     * @param int $level
-     * @param array $list
-     * @return array
-     */
-    private function getCatList($parent_id,$level = 0,&$list=[]){
-        $cat=ArticleCat::where('parent_id',$parent_id)->orderBy('sort_order')->get();
-        foreach ($cat as $item) {
-            $itemArr = $item->toArray();
-            $itemArr['level']=$level;
-            $list[]=$itemArr;
-            if (!$item->children->isEmpty()) {
-                $this->getCatList($item->cat_id,$level+1,$list);
-            }
-        }
-        return $list;
     }
 }
