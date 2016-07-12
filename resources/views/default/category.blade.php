@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div class="row col-md-9">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb col-md-12">
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$cat->cat_name}}</li>
                 </ol>
