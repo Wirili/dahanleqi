@@ -4,13 +4,15 @@
     <div class="container" style="margin-top:10px;">
         <div class="row">
             <div class="col-md-3 hidden-xs">
-                <ul class="nav nav-pills nav-stacked">
+                <div class="row">
+                <ul class="nav nav-pills nav-stacked col-md-12">
                     @foreach(\App\Models\Category::all() as $item)
                         <li role="presentation" @if($item->cat_id == $goods->cat_id)class="active"@endif>
                             <a href="{{URL::route('category',['id'=>$item->cat_id])}}">{{$item->cat_name}}</a>
                         </li>
                     @endforeach
                 </ul>
+                </div>
             </div>
             <div class="col-md-9">
                 <div class="row">
