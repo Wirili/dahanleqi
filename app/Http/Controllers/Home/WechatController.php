@@ -65,7 +65,7 @@ class WechatController extends Controller
         });
         return $server->serve();
     }
-
+    //关注
     protected function subscribe($message)
     {
         $socialite=Socialite::where('openid',$message->FromUserName)->first();
@@ -76,6 +76,7 @@ class WechatController extends Controller
         return '欢迎关注优乐柔！';
     }
 
+    //取消关注
     protected function unsubscribe($message)
     {
         $socialite=Socialite::where('openid',$message->FromUserName)->first();
