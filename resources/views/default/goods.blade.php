@@ -13,7 +13,8 @@
                 </ul>
             </div>
             <div class="col-md-9">
-                <ol class="breadcrumb hidden-xs">
+                <div class="row">
+                <ol class="breadcrumb hidden-xs col-md-12">
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$goods->goods_name}}</li>
                 </ol>
@@ -55,6 +56,7 @@
                 @else
                         没有数据
                 @endif
+            </div>
             </div>
         </div>
     </div>
