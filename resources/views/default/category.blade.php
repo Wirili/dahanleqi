@@ -11,7 +11,7 @@
             <div class="col-md-3">
                 <ul class="nav nav-pills nav-stacked">
                     @foreach(\App\Models\Category::all() as $item)
-                        <li role="presentation" @if($item->cat_id == $cat->id)class="active"@endif><a
+                        <li role="presentation" @if($item->cat_id == $cat->cat_id)class="active"@endif><a
                                     href="{{URL::route('category',['id'=>$item->cat_id])}}">{{$item->cat_name}}</a></li>
                     @endforeach
                 </ul>
@@ -24,14 +24,15 @@
                 @if(!$goods->isEmpty())
                     @foreach($goods as $good)
                         <div class="col-md-4">
-                            <img src="@if($good->covers) {{$good->covers->thumb_url}} @endif" alt="..."
-                                 class="img-thumbnail">
-                            <div><span>{{$good->goods_name}}</span></div>
+                            <a class="img-thumbnail" href="{{URL::route('goods',['id'=>$good->goods_id])}}" style="width:100%; margin-bottom:30px;">
+                                <img src="@if($good->covers) {{\App\models\GoodsImage::getImage($good->covers->thumb_url)}} @else {{asset('\data\no_picture.gif')}} @endif" alt="{{$good->goods_name}}" style="width:100%;">
+                                <div class="text-center"><span>{{$good->goods_name}}</span></div>
+                            </a>
                         </div>
                     @endforeach
                     <div class="row text-right">{!! with(new \Illuminate\Pagination\SimpleBootstrapThreePresenter($goods))->render() !!}</div>
                 @else
-                        没有数据
+                    <div class="text-center">没有数据</div>
                 @endif
             </div>
         </div>
