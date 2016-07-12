@@ -54,6 +54,9 @@ Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax'
 //文章路由
 Route::get('article/{id}',['uses'=>'Home\ArticleController@index','as'=>'article']);
 
+//商品路由
+Route::get('goods/{id}',['uses'=>'Home\GoodsController@index','as'=>'goods']);
+
 
 //微信路由
 Route::group(['prefix' => 'admin/wechat'], function () {
