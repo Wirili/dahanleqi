@@ -8,7 +8,7 @@
     @endif
     <div class="container" style="margin-top:10px;">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 hidden-xs">
                 <ul class="nav nav-pills nav-stacked">
                     @foreach(\App\Models\Category::all() as $item)
                         <li role="presentation" @if($item->cat_id == $cat->cat_id)class="active"@endif><a
@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div class="col-md-9">
-                <ol class="breadcrumb col-md-12">
+                <ol class="breadcrumb col-md-12 hidden-xs">
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$cat->cat_name}}</li>
                 </ol>

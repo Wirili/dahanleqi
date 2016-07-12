@@ -3,7 +3,7 @@
 @section('content')
     <div class="container" style="margin-top:10px;">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 hidden-xs">
                 <ul class="nav nav-pills nav-stacked">
                     @foreach(\App\Models\Category::all() as $item)
                         <li role="presentation" @if($item->cat_id == $goods->cat_id)class="active"@endif>
@@ -13,40 +13,30 @@
                 </ul>
             </div>
             <div class="col-md-9">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb hidden-xs">
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$goods->goods_name}}</li>
                 </ol>
+            <!-- Swiper -->
                 @if(!$goods->images->isEmpty())
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            @foreach($goods->images as $key=>$img)
-                            <li data-target="#carousel-example-generic" data-slide-to="{{$key}}" @if($key==0) class="active"@endif></li>
-                            @endforeach
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                            @foreach($goods->images as $key=>$img)
-                            <div  class="item @if($key==0) active @endif">
-                                <img src="{{asset($img->thumb_url)}}" alt="{{$key}}">
-                                <div class="carousel-caption"></div>
-                            </div>
-                            @endforeach
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach($goods->images as $key=>$img)
+                        <div class="swiper-slide"><img src="{{asset($img->thumb_url)}}" alt="{{$key}}" style="width:100%;"></div>
+                        @endforeach
                     </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
                 @endif
+                <script>
+                    $(function(){
+                        var swiper = new Swiper('.swiper-container', {
+                            pagination: '.swiper-pagination',
+                            paginationClickable: true
+                        });
+                    });
+                </script>
                 @if($goods)
                     <div class="col-md-12">
                         <!-- Nav tabs -->
