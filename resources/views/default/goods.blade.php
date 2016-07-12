@@ -17,8 +17,7 @@
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$goods->goods_name}}</li>
                 </ol>
-
-                <div>
+                @if(!$goods->images->isEmpty())
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
@@ -47,8 +46,7 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                </div>
-
+                @endif
                 @if($goods)
                     <div class="col-md-12">
                         <!-- Nav tabs -->
