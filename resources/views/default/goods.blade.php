@@ -12,7 +12,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="row col-md-9">
+            <div class="col-md-9">
                 <ol class="breadcrumb">
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$goods->goods_name}}</li>
