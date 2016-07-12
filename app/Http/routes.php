@@ -51,6 +51,10 @@ Route::get('index/quality',['uses'=>'Home\IndexController@quality','as'=>'index.
 Route::get('award/index',['uses'=>'Home\AwardController@index','as'=>'award.index']);
 Route::post('award/ajax',['uses'=>'Home\AwardController@ajax','as'=>'award.ajax']);
 
+//文章路由
+Route::get('article/{id}',['uses'=>'Home\ArticleController@index','as'=>'article']);
+
+
 //微信路由
 Route::group(['prefix' => 'admin/wechat'], function () {
     Route::get('index',['uses'=>'Admin\Wechat\IndexController@index','as'=>'admin.wechat.index']);

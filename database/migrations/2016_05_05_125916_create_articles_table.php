@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('keywords')->comment('关键字');
             $table->boolean('article_type')->default(2)->comment('');
             $table->boolean('is_open')->default(1)->comment('是否显示;1显示;0不显示');
+            $table->boolean('show_in_nav')->default(0)->comment('是否在导航栏显示');
             $table->string('file_url')->comment('上传文件或者外部文件的url');
             $table->boolean('open_type')->default(0)->comment('0,正常; 当该字段为1或2时,会在文章最后添加一个链接’相关下载’,连接地址等于file_url的值;但程序在此处有Bug');
             $table->string('link')->comment('该文章标题所引用的连接,如果该项有值将不能显示文章内容,即该表中content的值');

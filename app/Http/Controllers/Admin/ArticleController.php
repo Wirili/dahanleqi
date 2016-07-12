@@ -95,6 +95,7 @@ class ArticleController extends Controller
         $artcile->author_email = $request->author_email;
         $artcile->keywords = $request->keywords;
         $artcile->is_open = $request->input('is_open',0);
+        $artcile->show_in_nav = $request->input('show_in_nav',0);
         $artcile->file_url = $request->file_url;
         $artcile->link = $request->link;
         $artcile->description = $request->description;
