@@ -24,6 +24,8 @@
                     <li><a href="{{URL::route('index')}}">首页</a></li>
                     <li class="active">{{$cat->cat_name}}</li>
                 </ol>
+                </div>
+                <div class="row">
                 @if(!$goods->isEmpty())
                     @foreach($goods as $good)
                         <div class="col-md-4">
@@ -33,7 +35,7 @@
                             </a>
                         </div>
                     @endforeach
-                    <div class="row text-right">{!! with(new \Illuminate\Pagination\SimpleBootstrapThreePresenter($goods))->render() !!}</div>
+                    <div class="col-md-12 text-right">{!! with(new \Illuminate\Pagination\SimpleBootstrapThreePresenter($goods))->render() !!}</div>
                 @else
                     <div class="text-center">没有数据</div>
                 @endif
