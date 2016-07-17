@@ -25,7 +25,7 @@ class CreateGoodsTable extends Migration
             $table->string('keywords',255)->nullable()->comment('关键字');
             $table->text('goods_desc')->nullable()->comment('详细描述');
             $table->text('goods_desc_short')->nullable()->comment('简单描述');
-            $table->integer('img_id')->comment('封面图');
+            $table->integer('img_id')->nullable()->comment('封面图');
             $table->boolean('is_delete')->default(0)->comment('是否删除');
             $table->boolean('is_on_sale')->default(1)->comment('是否上架');
             $table->boolean('is_best')->default(0)->comment('是否精品');

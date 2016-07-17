@@ -16,7 +16,6 @@ class BrandTableSeeder extends Seeder
         $list=[];
         for($i=1;$i<=10;$i++) {
             $list[] =[
-                'brand_id' => $i,
                 'brand_name' => '品牌'.$i,
             ];
         }
