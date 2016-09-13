@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->tinyInteger('sort_order')->default(50)->comment('排序');
             $table->boolean('is_show')->default(true)->comment('是否显示');
             $table->boolean('show_in_nav')->default(false)->comment('在导航栏中显示');
-            $table->string('show_img',255)->comment('展示图片');
+            $table->string('show_img',255)->nullable()->comment('展示图片');
             $table->timestamps();
         });
     }

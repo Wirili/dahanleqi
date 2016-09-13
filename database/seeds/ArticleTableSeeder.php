@@ -16,7 +16,6 @@ class ArticleTableSeeder extends Seeder
         $list=[];
         for($i=1;$i<=105;$i++) {
             $list[] =[
-                'article_id' => $i,
                 'cat_id' => 1,
                 'title' => '帮助',
                 'contents' => 'adf',
