@@ -16,6 +16,7 @@
     <!-- JavaScripts -->
     <script src="{{asset('common/js/jquery-1.12.3.min.js')}}"></script>
     <script src="{{asset('common/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('default/js/isotope.pkgd.min.js')}}"></script>
 
     <script src="{{asset('default/js/app.js')}}"></script>
 
