@@ -1,6 +1,13 @@
 @extends('default.layouts.layouts')
 
 @section('content')
+    @if(!$goods->category->isEmpty())
+        @if($goods->category->show_img)
+        <div class="container-fluid">
+            <div class="row"><img src="{{$goods->category->show_img}}" alt="" style="width:100%;"></div>
+        </div>
+        @endif
+    @endif
     <div class="container" style="margin-top:10px;">
         <div class="row">
             <div class="col-md-3 hidden-xs">
