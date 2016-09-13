@@ -7,6 +7,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="{{asset('/data/a_img/1.jpg')}}" alt="1" style="width:100%;"></div>
                     <div class="swiper-slide"><img src="{{asset('/data/a_img/2.jpg')}}" alt="2" style="width:100%;"></div>
+                    <div class="swiper-slide"><img src="{{asset('/data/a_img/3.jpg')}}" alt="3" style="width:100%;"></div>
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
