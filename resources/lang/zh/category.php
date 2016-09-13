@@ -25,6 +25,7 @@ return [
     'cat_desc' => '描述',
     'keywords' => '关键字',
     'is_show' => '是否显示',
+    'show_img' => '图片',
     'show_in_nav' => '在导航栏中显示',
     'parent'=>'上级分类',
     'topcat'=>'顶级分类',
