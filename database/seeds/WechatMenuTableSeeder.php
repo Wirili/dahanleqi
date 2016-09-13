@@ -14,7 +14,7 @@ class WechatMenuTableSeeder extends Seeder
     {
         //
         $list = [[
-            'name' => '优乐柔',
+            'name' => '大韩乐奇',
             'type' => 'view',
             'url' => 'http://ylr.ch-city.com'
         ], [

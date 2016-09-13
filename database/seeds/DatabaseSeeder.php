@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
          $this->call(AdminTableSeeder::class);
          $this->call(UserTableSeeder::class);
-         $this->call(ArticleTableSeeder::class);
-         $this->call(ArticleCatTableSeeder::class);
-         $this->call(CategoryTableSeeder::class);
-         $this->call(BrandTableSeeder::class);
-         $this->call(GoodsTableSeeder::class);
-         $this->call(GoodsImageTableSeeder::class);
+//         $this->call(ArticleTableSeeder::class);
+//         $this->call(ArticleCatTableSeeder::class);
+//         $this->call(CategoryTableSeeder::class);
+//         $this->call(BrandTableSeeder::class);
+//         $this->call(GoodsTableSeeder::class);
+//         $this->call(GoodsImageTableSeeder::class);
          $this->call(RoleTableSeeder::class);
          $this->call(SocialitesTableSeeder::class);
          $this->call(WechatMenuTableSeeder::class);

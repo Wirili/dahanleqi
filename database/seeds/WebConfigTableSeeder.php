@@ -23,22 +23,22 @@ class WebConfigTableSeeder extends Seeder
             'parent_id'=>1,
             'code'=>'web_name',
             'type'=>'text',
-            'value'=>'优乐柔'
+            'value'=>'大韩乐奇'
         ],[
             'parent_id'=>1,
             'code'=>'web_title',
             'type'=>'text',
-            'value'=>'优乐柔'
+            'value'=>'大韩乐奇'
         ],[
             'parent_id'=>1,
             'code'=>'web_desc',
             'type'=>'text',
-            'value'=>'优乐柔可湿巾'
+            'value'=>'大韩乐奇'
         ],[
             'parent_id'=>1,
             'code'=>'web_keys',
             'type'=>'text',
-            'value'=>'优乐柔可湿巾'
+            'value'=>'大韩乐奇'
         ],[
             'parent_id'=>1,
             'code'=>'web_address',
