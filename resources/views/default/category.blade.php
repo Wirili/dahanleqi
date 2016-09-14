@@ -10,12 +10,14 @@
         <div class="row">
             <div class="col-md-3 hidden-xs">
                 <div class="row">
-                <ul class="nav nav-pills nav-stacked col-md-12">
+                    <div class=" col-md-12">
+                <ul class="nav nav-pills nav-stacked">
                     @foreach(\App\Models\Category::all() as $item)
                         <li role="presentation" @if($item->cat_id == $cat->cat_id)class="active"@endif><a
                                     href="{{URL::route('category',['id'=>$item->cat_id])}}">{{$item->cat_name}}</a></li>
                     @endforeach
                 </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-md-9">
@@ -25,21 +27,23 @@
                     <li class="active">{{$cat->cat_name}}</li>
                 </ol>
                 </div>
-                <div class="row">
+                <div class="row grid">
                 @if(!$goods->isEmpty())
                     @foreach($goods as $good)
-                        <div class="col-md-4">
+                        <div class="col-md-4 grid-item">
                             <a class="img-thumbnail" href="{{URL::route('goods',['id'=>$good->goods_id])}}" style="width:100%; margin-bottom:30px;">
                                 <img src="@if($good->covers) {{\App\models\GoodsImage::getImage($good->covers->thumb_url)}} @else {{asset('\data\no_picture.gif')}} @endif" alt="{{$good->goods_name}}" style="width:100%;">
                                 <div class="text-center"><span>{{$good->goods_name}}</span></div>
                             </a>
                         </div>
                     @endforeach
+                @endif
+                </div>
+                @if(!$goods->isEmpty())
                     <div class="col-md-12 text-right">{!! with(new \Illuminate\Pagination\SimpleBootstrapThreePresenter($goods))->render() !!}</div>
                 @else
                     <div class="text-center">没有数据</div>
                 @endif
-            </div>
             </div>
         </div>
     </div>
