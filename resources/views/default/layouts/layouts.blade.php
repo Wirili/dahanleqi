@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{URL::route('index')}}">大韩乐奇</a>
+                <a class="navbar-brand" href="{{URL::route('index')}}">露易娜</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-home">
@@ -65,7 +65,7 @@
     </nav>
 @yield('content')
 <footer class="text-center">
-    <p>{{$config['web_icp']}} | 大韩乐奇 版权所有</p>
+    <p><a href="www.miitbeian.gov.cn/">{{$config['web_icp']}}</a> 版权所有</p>
 </footer>
 </body>
 </html>
