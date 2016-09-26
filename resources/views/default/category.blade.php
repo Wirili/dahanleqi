@@ -1,9 +1,6 @@
 @extends('default.layouts.layouts')
 
 @section('content')
-    <style>
-        .grid-item .img-thumbnail{width:100%;display:block;}
-    </style>
     @if($cat->show_img)
         <div class="container-fluid">
             <div class="row"><img src="{{$cat->show_img}}" alt="" style="width:100%;"></div>
