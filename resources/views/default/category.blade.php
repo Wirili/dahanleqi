@@ -47,4 +47,11 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function(){
+            $(".grid").isotope({
+                itemSelector: '.grid-item'
+            });
+        })
+    </script>
 @endsection
