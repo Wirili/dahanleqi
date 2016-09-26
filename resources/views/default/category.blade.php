@@ -50,14 +50,7 @@
     <script>
         $(window).load(function(){
             $('.grid').isotope({
-                itemSelector: '.grid-item',
-                filter: '*',
-                //sortBy : 'random',
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear',
-                    queue: false,
-                }
+                itemSelector: '.grid-item'
             });
         });
 //        $(function(){
