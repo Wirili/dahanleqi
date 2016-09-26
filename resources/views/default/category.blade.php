@@ -1,6 +1,9 @@
 @extends('default.layouts.layouts')
 
 @section('content')
+    <style>
+        .grid-item .img-thumbnail{width:100%;display:block;}
+    </style>
     @if($cat->show_img)
         <div class="container-fluid">
             <div class="row"><img src="{{$cat->show_img}}" alt="" style="width:100%;"></div>
@@ -30,7 +33,7 @@
                 <div class="row grid">
                 @if(!$goods->isEmpty())
                     @foreach($goods as $good)
-                        <div class="col-md-4 grid-item">
+                        <div class="col-lg-4 col-md-6 col-xs-12 grid-item">
                             <a class="img-thumbnail" href="{{URL::route('goods',['id'=>$good->goods_id])}}" style="width:100%; margin-bottom:30px;">
                                 <img src="@if($good->covers) {{\App\models\GoodsImage::getImage($good->covers->thumb_url)}} @else {{asset('\data\no_picture.gif')}} @endif" alt="{{$good->goods_name}}" style="width:100%;">
                                 <div class="text-center"><span>{{$good->goods_name}}</span></div>
@@ -48,10 +51,22 @@
         </div>
     </div>
     <script>
-        $(function(){
-            $(".grid").isotope({
-                itemSelector: '.grid-item'
+        $(window).load(function(){
+            $('.grid').isotope({
+                itemSelector: '.grid-item',
+                filter: '*',
+                //sortBy : 'random',
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false,
+                }
             });
-        })
+        });
+//        $(function(){
+//            $(".grid").isotope({
+//                itemSelector: '.grid-item'
+//            });
+//        })
     </script>
 @endsection
